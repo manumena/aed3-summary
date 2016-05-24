@@ -1,0 +1,231 @@
+\section{Práctica 3}
+
+\setcounter{subsection}{1}
+\subsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+hanoi(int discos)
+
+    si discos == 1 entonces
+
+        moverUnicoDisco()
+
+    sino
+    
+        // Mueve la torre de discos - 1 discos a otro lugar, dependiendo de la paridad
+        hanoi(discos - 1)
+
+        // Mueve dependiendo de la paridad
+        moverUltimoDisco()
+
+        // Mueve la torre de discos - 1 discos sobre la base ya movida
+        hanoi(discos - 1)
+
+    fin si
+
+fin hanoi
+\end{verbatim}
+\end{codesnippet}
+
+\setcounter{subsection}{3}
+\subsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+torneo(lista)
+
+    para i entre 0 y n - 1
+        para j entre 0 y n / 2
+            fixture[i].agregar(lista[j],lista[n/2 + j])
+        fin para
+    fin para
+
+    torneo(lista[0..n/2))
+    torneo(lista[n/2..n))
+fin torneo    
+\end{verbatim}
+\end{codesnippet}
+
+\setcounter{subsection}{6}
+\subsection{}
+\subsubsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+coeficientesBinomiales(int grado)
+
+    vector<int> coefs
+    coefs.agregar(1)
+
+    para i entre 0 y grado
+        coefs.agregar(1)
+        para j entre 1 y coefs.largo() - 1
+            coefs[j] = coefs[j] + coefs[j+1]
+        fin para
+    fin para
+
+    devolver coefs
+
+fin coeficientesBinomiales
+\end{verbatim}
+\end{codesnippet}
+
+\setcounter{subsection}{8}
+\subsection{}
+
+\subsubsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+
+arreglo[v.tamaño()]<mapa<int,(bool esPosible,lista<char> opList)>> ops
+
+operaciones(lista<int> v, int w)
+
+    // Chequea si ya fue calculada una manera de formar w. De ser asi termina, sino la calcula
+    // y la guarda
+    si !ops[v.tamaño() - 1].existe(w) entonces
+
+        si v.tamaño() == 1 entonces
+            ops[0].agregar((v.primero() == w, []))
+        sino
+            
+            operaciones(v.sinElUltimo(), w - v.ultimo())
+
+            (bool, lista<char>) info = ops[v.tamaño() - 2].obtener(w - v.ultimo())
+            si info.esPosible entonces
+               ops[v.tamaño() - 1].agregar(w, (true, info.opList + '+'))
+            sino
+                ops[v.tamaño() - 1].agregar(w, (false, [])
+            fin si
+
+            operaciones(v.sinElUltimo(), w / v.ultimo())
+
+            (bool, lista<char>) info = ops[v.tamaño() - 2].obtener(w / v.ultimo())
+            si info.esPosible entonces
+               ops[v.tamaño() - 1].agregar(w, (true, info.opList + '*'))
+            sino
+                ops[v.tamaño() - 1].agregar(w, (false, [])
+            fin si
+
+            operaciones(v.sinElUltimo(), raiz(v.ultimo(), w))
+
+            (bool, lista<char>) info = ops[v.tamaño() - 2].obtener(raiz(v.ultimo(), w))
+            si info.esPosible entonces
+                ops[v.tamaño() - 1].agregar(w, (true, info.opList + '^'))
+            sino
+                ops[v.tamaño() - 1].agregar(w, (false, [])
+            fin si
+            
+        fin si
+    fin si
+fin operaciones
+\end{verbatim}
+\end{codesnippet}
+
+\subsubsection{}
+La complejidad temporal es $\ord(n)$ con $n$ el largo de $v$. Esto es porque para cada elemento se calcula cada una de las 3 operaciones con el siguiente elemento, una unica vez. No se produce una ramificación exponencial debido a que las soluciones parciales se almacenan.
+
+\setcounter{subsection}{10}
+\subsection{}
+
+\subsubsection{}
+No. La más eficiente es insertar una c entre las dos b y borrar la segunda a
+
+\subsubsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+
+arreglo[v.tamaño()]<mapa<string palabra,int cambios>> cambios
+
+int transformar(String u, String v, int indice)
+
+    si !cambios[indice].existe(v) entonces
+
+        si u.primero() == v.primero() entonces
+
+            sinCam = transformar(u.cola(), v.cola(), indice + 1)
+            cambios[indice].agregar(v, sinCam)
+
+        sino
+    
+            // Borrando
+            borr = transformar(u.cola(), v, indice)
+
+            //Agregando
+            agre = transformar(u, v.cola(), indice + 1)
+
+            //Cambiando
+            cam = transformar(u.cola(), v.cola(), indice + 1)
+
+            cambios[indice].agregar(v, min(borr, agre, cam) + 1)
+
+        fin si
+
+    fin si
+
+    devolver cambios[indice].obtener(v)
+
+fin transformar
+
+devolver transformar(u, v, 0)
+
+\end{verbatim}
+\end{codesnippet}
+
+\setcounter{subsection}{12}
+\subsection{}
+
+\subsubsection{}
+Habría que considerar $64 \choose 8$ posibilidades.
+
+\subsubsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+lista<int> reinas(int cantReinas, lista<int> posiciones)
+    si cantReinas == 0 entonces
+        devolver posiciones
+    sino
+        para i entre 0 y 64
+            si !colisiona(i, posiciones) entonces
+                lista<int> posisionesRec = reinas(cantReinas - 1, posiciones + i)
+                si posicionesRec.largo() == cantReinas entonces
+                    devolver posicionesRec
+                fin si
+            fin si
+        fin para
+
+        devolver posiciones
+
+    fin si
+fin reinas
+\end{verbatim}
+\end{codesnippet}
+
+\subsection{}
+
+\begin{codesnippet}
+\begin{verbatim}
+int mochila(vector<(int w, int v)> objetos, int W)
+
+    int max = 0
+
+    para i entre 0 y objetos.largo()
+        int cantObjetoI = W / objetos[i].w
+        int mochilaRec = mochila(objetos.sin(i), W - cantObjetoI)
+        max = maximo(max, mochilaRec) + cantObjetoI * objetos[i].v
+    fin para
+
+    devolver max
+fin mochila
+\end{verbatim}
+\end{codesnippet}
+
+\subsection{}
+
+\setcounter{subsubsection}{1}
+\subsubsection{}
+La cantidad de subconjuntos de $S$ es igual a $partes(S)$ por lo que su complejidad es de $\ord(2^n)$

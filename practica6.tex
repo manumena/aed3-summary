@@ -1,0 +1,140 @@
+\section{Práctica 6}
+
+\subsection{}
+
+\subsubsection{}
+El máximo número de vértices de un grafo conexo de 20 aristas es 21. El máximo grafo conexo que puedo formar para una cantidad fija de aristas es aquel que no tiene ciclos, es decir, un árbol.
+
+\subsubsection{}
+Sea $G$ un árbol con $m$ cantidad de ejes, siendo $m$ par. Como $G$ es árbol, tiene una cantidad de vértices $n$, talque $m = n - 1$. Por lo tanto $n$ es impar. Supongo que $G$ no tiene nodos de grado par. 
+
+Se sabe que $2m = \sum_{i = 1}^{n}d(v_i)$. Pero la suma de los grados de los nodos no puede ser par, ya que se suman números impares una cantidad impar de veces. 
+
+El absurdo proviene de haber supuesto que no $G$ no tiene nodos de grado par, por lo que $G$ tiene al menos un nodo de grado par y no sólo eso, sino que tiene un número impar de nodos de grado par, ya que de lo contrario la suma de los grados sería impar.
+
+\subsection{}
+
+\setcounter{subsubsection}{1}
+\subsubsection{}
+
+Si. Es un árbol con un eje adicional.
+
+\subsubsection{}
+
+Si. Un árbol con dos ejes adicionales.
+
+\subsection{}
+\subsubsection{}
+
+Utilizaremos el siguiente teorema: 
+
+Un grafo G con 2 o más nodos es bipartito si y sólo si no tiene circuitos simples de longitud impar.
+
+Un árbol no trivial tiene 2 o más nodos y no tiene circuitos simples. Por lo tanto, es bipartito.
+
+\subsubsection{}
+
+Si, el árbol de dos vértices.
+
+\setcounter{subsection}{4}
+\subsection{}
+
+Sabemos que $m = \frac{\sum_{i = 1}^{n}d(v_i)}{2}$ $\Longleftrightarrow$ $2m = \sum_{i = 1}^{n}d(v_i)$ y que $n \geq 2$.
+
+Suponemos que el árbol tiene una sola hoja, osea que hay un nodo que tiene grado 1 y el resto mayor a 2.
+
+Entonces $2m = \sum_{i = 1}^{n - 1}d(v_i) + 1$ $\Longleftrightarrow$ $2m - 1= \sum_{i = 1}^{n - 1}d(v_i)$
+
+Sabemos también que  $d(v_i) \geq 2$ $(\forall$ $1 \leq i \leq n - 1)$
+
+Entonces $2m - 1= \sum_{i = 1}^{n - 1}d(v_i) \geq 2(n - 1) = 2n - 2$
+
+Como es árbol sabemos que $m = n - 1$
+
+$2m - 1 \geq 2n - 2$
+
+$2(n - 1) - 1 \geq 2n - 2$
+
+$2n - 3 \geq 2n - 2$
+
+Absurdo proveniente de suponer que el árbol tenía una sola hoja.
+
+Para 0 hojas la demostración es igual.
+
+\subsection{}
+
+$\Longrightarrow$ )
+
+$G$ es un bosque, es decir, un grafo sin ciclos. 
+
+Una arista pertenece a un ciclo si al quitar esta arista, sus extremos pertenecen a la misma componente conexa.
+
+Se que cualquier arista que saque de $G$ no pertenecerá a un ciclo, ya que no tiene. Entonces al sacarla sus extremos dejarán de pertenecer a la misma componente conexa formando dos componentes distintas, donde cada extremo de la arista sacada pertenece a una componente distinta.
+
+$\Longleftarrow$ )
+
+Al sacar cualquier eje de $G$ aumenta el número de componentes conexas. 
+
+Entonces cualquier arista de $G$ que tome, es un puente entre dos componentes conexas distintas. Esto significa que la arista no pertenecía a un ciclo, ya que si lo hiciese, sus extremos pertenecerían a la misma componente conexa. 
+
+Por lo tanto, $G$ no tiene ciclos.
+
+\subsection{}
+La cantidad $m$ de aristas de un árbol es $n - 1$. Por lo que la del el complemento es la cantidad total posible menos $m$. Esto es $\frac{n(n - 1)}{2} - (n - 1) = \frac{(n - 1)(n - 2)}{2}$. Esa cantidad de aristas es la misma que la de un subgrafo completo de $n - 1$ nodos. Por lo que hay dos opciones:
+
+\begin{itemize}
+\item 
+El árbol contiene un nodo que tiene aristas con el resto de los nodos, su complemento deja a ese nodo sin aristas y al resto con aristas entre todos menos dicho nodo, osea un nodo asilado y un subgrafo completo.
+
+\item
+El árbol no contiene un nodo que tenga aristas con todos los demás nodos, por lo que su complemento no tiene un subgrafo completo de tamaño $n - 1$, $K_{n-1}$.
+\end{itemize}
+
+\setcounter{subsection}{8}
+\subsection{}
+
+\subsubsection{}
+No porque un árbol binario tiene un número par de aristas, por ser árbol vale $m = n - 1$, por lo tanto tiene un número impar de vertices.
+
+\subsubsection{}
+$n = \sum_{i = 0}^{h}m^i$
+
+\subsubsection{}
+Un árbol $m-$ario es aquel que para el cual cada nodo tiene $m$ hijos ó es hoja. Entonces la máxima cantidad de hojas que puede tener es cuando cada nodo tiene $m$ hijos hasta llegar a tener altura $h$. Si esto se cumple cada nodo tendra $m$ hijos, $h$ veces. Por lo que la cantidad de hojas es de $m^h$.
+
+\setcounter{subsection}{10}
+\subsection{}
+
+\subsubsection{}
+Si tiene un único árbol generador, es porque no existe más de un camino para cada par de nodos, por que tampoco tiene ciclos y por lo tanto, es un árbol.
+
+\subsubsection{}
+Tomando la unión entre todos.
+
+\subsubsection{}
+Depende de la cantidad de ciclos que tenga el grafo y de sus longitudes. La cantidad de árboles generadores que pueden formarse es igual a la cantidad de combinaciones de aristas que pueden sacarse, siempre una de cada ciclo. Es necesario tener en cuenta los ciclos que comparten aristas para no repetir combinaciones.
+
+\setcounter{subsection}{16}
+\subsection{}
+
+\subsubsection{}
+Pueden contarse la cantidad de nodos recorridos a partir de un nodo cualquiera, si esa cantidad es igual a la cantidad de nodos del grafo, es conexo, sino no.
+
+\subsection{}
+Se hacen DFSs o BFSs partiendo de todos los nodos que no hayan sido marcados previamente por el algoritmo. Se cuenta esta cantidad de ``comienzos'' del algoritmo. Esa es la cantidad de componentes conexas.
+
+\subsection{}
+\subsubsection{}
+Su complejidad es $\ord((n + m)$ $log$ $n)$
+
+\setcounter{subsection}{19}
+\subsection{}
+Debe construirse (B,A)(A,C)(C,D)(D,E) con un largo total de 33.
+
+\subsection{}
+
+\subsubsection{}
+Es análogo a Prim o Kruskal con la modificación de que cada nodo comienza con distancia $-\infty$ y se reemplaza por el máximo en lugar del mínimo
+
+\subsubsection{}
+El máximo árbol tiene peso total 34.

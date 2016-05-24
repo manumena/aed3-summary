@@ -1,0 +1,78 @@
+% ALGUNOS PAQUETES REQUERIDOS (EN UBUNTU): %
+% ========================================
+% %
+% texlive-latex-base %
+% texlive-latex-recommended %
+% texlive-fonts-recommended %
+% texlive-latex-extra %
+% texlive-lang-spanish (en ubuntu 13.10) %
+% ******************************************************** %
+
+\documentclass[a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[pdftex]{graphicx}
+\usepackage{sidecap}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{makeidx}
+\usepackage{float}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsfonts}
+\usepackage{sectsty}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{listingsutf8}
+
+% Para ver los marcos
+% \usepackage{showframe}
+
+\newcommand{\ord}{\ensuremath{\operatorname{O}}}
+\newcommand{\nat}{\ensuremath{\mathbb{N}}}
+\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+
+% Lemas, definiciones, etc.
+\theoremstyle{remark}
+\newtheorem*{obs}{Observación}
+\newtheorem*{nota}{Notación}
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+
+\input{codesnippet}
+\input{layout}
+
+\begin{document}
+
+\title{Algoritmos y Estructuras de Datos III}
+\author{Manuel Mena}
+\maketitle
+
+\tableofcontents
+
+\newpage
+\input{teoremas.tex}
+
+\setcounter{section}{2}
+\newpage
+\input{practica3.tex}
+
+\setcounter{section}{4}
+\newpage
+\input{practica5.tex}
+
+\newpage
+\input{practica6.tex}
+
+\newpage
+\input{practica7.tex}
+
+\newpage
+\input{practica8.tex}
+
+\end{document}

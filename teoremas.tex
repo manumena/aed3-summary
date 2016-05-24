@@ -1,0 +1,282 @@
+\section{Teoremas, lemas y propiedades}
+
+\subsection{Árboles}
+
+\begin{lema}
+    $G = (V, X)$ grafo conexo y $e \in X$. $G - e$ es conexo $\Longleftrightarrow e \in$ circuito simple de $G$    
+\end{lema}
+
+\begin{proof}
+    ~
+
+    $\Longrightarrow$ )
+
+    $G$ es conexo, $e \in X$, $e:(v, w)$
+
+    $G - e$ es conexo, entonces existe un camino simple $P$ entre $v$ y $w$ en $G - e$.
+
+    Entonces $P + e$ es un circuito simple en $G$
+
+    ~
+
+    $\Longleftarrow$ )
+
+    $e \in$ circuito simple de $G$, $C$
+
+    Sean $z_1, z_2 \in V$. Seguro existe en $G$ un camino entre $z_1$ y $z_2$. Si ese camino no usa $e$, ese camino también pertenece a $G - e$. Si usa $e$, armamos un nuevo camino donde reemplazamos $e$ por $C - e$, donde el cmino resultante $\in G - e \Longrightarrow G - e$ conexo.
+\end{proof}
+
+\begin{lema}
+    La concatenación de dos caminos distintos entre un par de vértices contiene un circuito simple.
+\end{lema}
+
+\begin{teo}
+    Dado un grafo $G = (V, X)$ son equivalentes:
+
+    \begin{enumerate}
+        \item $G$ es un árbol.
+        \item $G$ es un grafo sin circuitos simples, pero si se agrega cualquier arista $e$ a $G$resulta un grafo con exactamente un circuito simple, y ese circuito contiene a $e$.
+        \item Existe exactamente un camino simple entre todo par de nodos.
+        \item $G$ es conexo, pero si se quita cualquier arista a $G$, queda un grafo no conexo.
+    \end{enumerate}
+\end{teo}
+
+\begin{proof}
+~
+
+1) $\Longrightarrow$ 2)
+
+$G$ árbol por definición $\Longrightarrow G$ conexo y sin ciclos simples sea $e \notin G$, $G + e$ es conexo.
+
+$(G + e) - e = G$ es conexo, entonces por Lema 1, $e$ pertenece a un circuito simple de $G + e$.
+
+Falta ver que sólo hay un circuito en $G + e$. Si hay en $G + e$ algún circuito al cual $\notin e$, ese circuito también estaría en $G$. Pero no puede ser porque $G$ es árbol.
+
+Si hay 2 o más circuitos en $G + e$, como $e$ tiene que pertenecer a todos, $C_1 - e$ es camino entre ``las puntas'' de $e$ y $C_2 - e$ es otro. Por Lema 2 $(C_1 - e) + (C_2 + e)$ contiene un circuito simple que pertenecería a $G$. Pero no puede ser porque $G$ es árbol. 
+
+~
+
+2) $\Longrightarrow$ 3)
+
+Sea $G$ que cumple 2). Suponemos que para $v, w$ no existe camino. $G + (v, w)$ tiene ciclo al cual $\in (v, w) + C$. Pero entonces $C - (v, w)$ es camino entre $v$ y $w$ en $G$. Absurdo. Entre todo par de vértices por lo menos existe un camino.
+
+Supongo que existen dos caminos distintos entre $v$ y $w$. Por Lema 2 la concatenación de esos caminos contiene un circuito. Absurdo porque $G$ no tiene circuitos.
+
+~
+
+3) $\Longrightarrow$ 4)
+
+$G$ cumple 3). $G$ es conexo.
+
+Sean $u, v$ dos vértices cualquiera y $e$ una arista del único camino simple entre $u$ y $v$ en $G$. Entonces en $G - e$ no existe un camino entre $u$ y $v$. Por lo tanto $G - e$ no es conexo.
+
+~
+
+4) $\Longrightarrow$ 1)
+
+$G$ cumple 4), entonces es conexo.
+
+Si hubiese un circuito en $G$, por Lema 1 al sacar una arista de ese circuito el grafo seguiría siendo conexo. Absurdo porque $G$ cumple 4) $\Longrightarrow G$ es árbol.
+\end{proof}
+\begin{lema}[Hojas]
+    Todo árbol no trivial tiene al menos dos hojas
+\end{lema}
+
+\begin{proof}
+    Sea $P$ un camino ``no extensible en los extremos'' (no incluido en un camino más grande), llamamos $u$ y $v$ a los extremos del camino.
+
+    No puede estar fuera del camino porque $P$ es maximal, no puede estar dentro ya que por Lema 2, se formaría un ciclo.
+\end{proof}
+
+\begin{lema}
+    Sea $G = (V, X)$ un árbol, entonces $m = n - 1$
+\end{lema}
+
+\begin{proof}
+    ~
+
+    Inducción en $n$:
+
+    Caso base: $n = 1$ $m = 0 = 1 - 1 = n - 1$
+
+    Paso inductivo ($n \geq 2$):
+
+    HI: Si $G$ es árbol con $n$ nodos entonces se cumple $m = n - 1$
+
+    Sea $G$ árbol con $n$ nodos. Sea $v$ hoja de $G$ (seguro existe por Lema 3), $G - v$ es árbol porque como $G$ no tenía circuitos $G - v$ tampoco, y como $v$ es hoja, tiene grado 1, por lo tanto $G - v$ es conexo.
+
+    $G - v$ tiene $n - 1$ nodos, aplicamos HI. Entonces $G - v$ tiene $n - 2$ aristas. Como $G$ tiene exactamente una arsista más que $G - v$, $G$ tiene $n - 2 + 1 = n - 1$ aristas.
+\end{proof}
+
+\subsection{Grafos eulerianos}
+
+\begin{teo}[Grados pares]
+    Un grafo (o multigrafo) conexo es euleriano $\Longleftrightarrow$ todos sus nodos tienen grado par.
+\end{teo}
+
+\begin{proof}
+~
+
+$\Longrightarrow$ )
+
+$G$ euleriano: Sea $C$ un circuito euleriano de $G$. Por cada aparición de un nodo $v$ en $C$ se ``utilizan'' exactamente dos aristas distintas incidentes a $v$ (aporta 2 al grado de $v$). Como toda arista tiene que estar en $C$, $d(v)$ es igual a 2 veces la cantidad de apariciones de $v$ en $C$. Entonces $d(v)$ es par $\forall v$.
+
+~
+
+$\Longleftarrow$ )
+
+Primero vamos a ver que si $d(v)$ es par $\forall v$ podemos particionar las aristas de $G$ en circuitos simples. Como todo bosque con por lo menos una arista tiene por lo menos dos hojas y $G$ no tiene nodos de grado 1, entonces $G$ no puede ser bosque. Entonces $G$ tiene por lo menos un circuito simple, $C_1$. Las aristas de $C_1$ forman un conjunto de la partición que estoy buscando.
+
+Sea $G_1 = G -$ aristas de $C_1$. Todos los vértices de $G_1$ siguen teniendo grado par. Si $G_1$ no tiene aristas ya tenemos la partición que buscábamos. Sino, seguro $G_1$ tiene un circuito simple, $C_2$. Y así iteramos hasta quedarnos sin aristas. La partición será $C_1, C_2, ..., C_k$ los circuitos simples. 
+
+Ahora armammos un cirucito euleriano ``pegando'' por algún nodo en común los circuitos $C_1, C_2, ..., C_k$. Comenzamos poniendo $Z = C_1$. Como $G$ es conexo seguro $Z$ y alguno de los circuitos $C_2, ..., C_k$ tienen un vértices en común. ``Pegamos'' $Z$ y ese circuito por el vértice en común para formar el nuevo $Z$. Y así iteramos hasta incorporar en $Z$ todos los circuitos $C_1, C_2, ..., C_k$. Como $C_1, C_2, ..., C_k$ es una partición de las arisas, entonces $Z$ es circuito euleriano.
+\end{proof}
+
+\begin{teo}[Camino euleriano]
+    Un grafo (o multigrafo) conexo tiene un camino euleriano $\Longleftrightarrow$ tiene exactamente dos nodos de grado impar.
+\end{teo}
+
+\begin{proof}
+~
+
+$\Longrightarrow$ )
+
+$G$ camino euleriano, $P = v_i0, ..., v_{ik}$ y $C = P + (v_{ik}, v_{i0})$ $\leftarrow$ arista nueva $\notin G$ (puede quedar multigrafo).
+
+$C$ es circuito euleriano en $G + (v_{ik}, v_{i0}) = G'$ entonces por teorema anterior $G'$ tiene todos los nodos de grado par.
+
+Como $d_G(v) = d_{G'}(v) \forall v \not= v_{i0}, v_{ik}$. $d_G(v)$ es par $\forall v \not= v_{i0}, v_{ik}$ y como $d_G(v_{i0}) = d_{G'}(v_{i0}) - 1 \land d_G(v_{ik}) = d_{G'}(v_{ik}) - 1 \Longrightarrow d_G(v_{i0})$ y $d_{G}(v_{ik}) - 1$ son impares.
+
+~
+
+$\Longleftarrow$ ) pendiente...
+\end{proof}
+
+\subsection{Grafos hamiltoneanos}
+
+\begin{teo}
+    Sea $G$ un grafo conexo. Si existe $W \subset V$ tal que $G \setminus W$ tiene $c$ componentes conexas con $C > |W|$ entonces $G$ no es hamiltoneano.
+\end{teo}
+
+\begin{proof}
+Supongo $\exists W \subseteq V$ tal que $G \setminus W$ tiene más de $|W|$ componentes conexas y $G$ es hamiltoneano. Sea $H$ un circuito hamiltoneano de $G$. $H \setminus W$ a lo sumo queda dividido en $|W|$ subcaminos (a lo sumo porque si dos nodos de $W$ son consecutivos en $H$ van a ser menos subcaminos).
+
+Cada subcamino forma parte de la misma componente conexa. Entonces hay a lo sumo la cantidad de subcaminos XXX (a lo sumo porque puede haber dos subcaminos unidos por fuera de $H$).
+
+Entonces hay a los sumo $|W|$ componentes conexas en $G \setminus W$. Absurdo.
+\end{proof}
+
+\newtheorem*{Dirac}{Teorema de Dirac}
+\begin{Dirac}
+Sea $G = (V, E)$, $|V| = n \geq 3$, $\forall v \in V$ $d(v) \geq \frac{n}{2} \Longrightarrow G$ es hamiltoniano.
+Supongo $d(v) \geq \frac{n}{2}$ $\forall v$ y $G$ no hamiltoneano. Sea $G'$ un grafo que resulta de agregar aristas a $G$ mientras siga siendo no hamiltoneano (seguro para antes de llegar a $K_n$). 
+\end{Dirac}
+
+\begin{proof}
+$G' = (V, X')$ cumple $d_{G'}(v) \geq \frac{n}{2}$, no es hamiltoneano y $\forall (u, v) \notin X'$. $G' + (u, v)$ es hamiltoneano. Sea $H$ un circuito hamiltoneano de $G' + (u, v)$, seguro $(u, v) \in H$.
+
+Sea $H' = H \setminus (u, v)$. $H'$ es camino hamiltoneano entre $u$ y $v$ y $H' \subseteq G'$. Si existen $z_i$ y $z_{i+1}$ adyacentes en $H'$ tal que $z_i$ está más cerca de $u$ en $H'$ que $z_{i+1}$ y $(u, z_{i+1}) \in X'$ y $(v, z_i) \in X'$ entonces $H'' : (u, z_{i+1}) + H'_{z_{i+1}v} + (v, z_i) + H'_{z_iu}$ sería circuito hamiltoneano de $G'$ y eso no puede ser. Entonces no existen $z_i$ y $z_{i+1}$ en esas condiciones.
+
+Por cada adyacente a $u$ en $H'$ distinto de $z_i$, $v$ no puede ser adyacente ``al anterior''.
+
+Si $d(u) = p, d(v) \leq n - 2 - (p - 1) = n - p - 1$.
+
+Entonces $d(u) + d(v) = p + n - p - 1 = n - 1$.
+
+Absurdo porque $d(u) + d(v) \geq \frac{n}{2} + \frac{n}{2} = n$.
+\end{proof}
+
+\begin{teo}
+Sea $G = (V, E)$ conexo son equivalentes:
+
+\begin{enumerate}
+    \item $G$ es euleriano (es decir, tiene un circuito euleriano).
+    \item $d(v)$ es par $\forall v \in V$.
+    \item $\exists$ partición de $E$ en circuitos simples
+\end{enumerate}
+
+\end{teo}
+
+\begin{teo}
+$G = (V, E)$ conexo, $s, t \in V$, son equivalentes:
+
+\begin{enumerate}
+    \item $G$ tiene un camino euleriano de $s$ a $t$.
+    \item $d(s)$ es impar, $d(t)$ es impar, y $d/v$ es par $\forall v \in V \setminus \{s, t\}$.
+\end{enumerate}
+
+\end{teo}
+
+\newtheorem*{Ore}{Teorema de Ore}
+\begin{Ore}
+    Sea $G = (V, E)$, $|V| = n \geq 3$, $\forall v, w \in V$ no adyacentes $d(v) + d(w) \geq n \Longrightarrow G$ es hamiltoniano.
+\end{Ore}
+
+\begin{teo}
+    Sea $G$ un digrafo son ciclos. $G$ tiene un camino hamiltoniano dirigido $\Longleftrightarrow$ existe un único orden topológico de sus vértices.
+\end{teo}
+
+\begin{proof}
+    ~
+
+    $\Longrightarrow$ )
+
+    Existe un orden topológico y ese es el camino hamiltoniano. 
+
+    Supongo que hay más de uno. Sea $i$ la posición de la primera diferencia, $v_i, w_i$ los nodos en cuestión. En el primer orden topológico, donde $v_i < w_i$, tengo que hay un camino de $v_i$ a $w_i$, por ser camino hamiltoniano, entonces en el segundo orden, donde $w_i < v_i$, sé que hay un camino de $v_i$ a $w_i$, lo que significaría que $v_i < w_i$. Absurdo porque no es orden topológico.
+
+    ~
+
+    $\Longleftarrow$ ) pendiente...
+\end{proof}
+
+\subsection{Coloreo}
+
+\begin{teo}[Headwood, 1890]
+    Si $G$ es un grafo planar, entonces $\chi(G) \leq 5$.
+\end{teo}
+
+\begin{proof}
+    ~
+
+    Inducción:
+
+    Vamos a usar que $\forall G$ planar, $\exists v \in V $ tal que $d(v) \leq 5$.
+
+    Caso base: $K_1$
+
+    Paso inductivo:
+
+    HI: $G$ planar con $n$ vértices entonces $\chi(G) \leq 5$
+
+    Sea $G$ planar con $n + 1$ vértices, sabemos que existe $v$ tal que $d(v) \leq 5$. $\chi(G - v) \leq 5$ por HI.
+
+    Hay dos posibilidades:
+    \begin{enumerate}
+        \item $d(v) \leq 4$
+
+        En un 5-coloreo de $G - v$ seguro hay por lo menos un color no usado en $N(v)$ (vecindad de $v$). Le pongo ese color a $v$ y obtengo un 5-coloreo de $G$.
+
+        \item $d(v) = 5$
+
+        2 posibilidades:
+
+        \begin{enumerate}
+        \item En el 5-coloreo de $G - v$ $\exists u_1, u_2 \in N(v)$ con igual color. Queda un color libre para $v$ para hacer un 5-coloreo de $G$.
+
+        \item En el 5-coloreo de $G - v$ todos los vértices adyacentes a $v$ tienen distinto color. 
+
+        Sean $v_1, ..., v_5$ los adyacentes a $v$ numerados en el sentido horario en una representación planar. Llamaremos $c_i$ al color de $v_i$.
+
+        $H_{c_1 c_3}$ es el subgrafo de $G - v$ inducido por los vértices de color $c_1$ ó $c_3$. 
+
+        Si $v_1$ y $v_3$ pertenecen a distintas componentes conexas de $H_{c_1 c_3}$ intercambiando los colores en la componente conexa de $v_1$ (podría haber sido la de $v_3$) así $c_1$ queda libre para $v$.
+
+        Si $v_1$ y $v_3$ pertenencen a la misma componente conexa de $H_{c_1 c_3}$ hay un camino entre ellos usando vértices de color $c_1$ ó $c_3$. Entonces seguro $v_2$ y $v_4$ pertenecen a distintas componentes conexas de $H_{c_2 c_4}$ (porque sino habría un camino entre $v_2$ y $v_4$ con nodos de $G - v$ pintados con color $c_2$ ó $c_4$ y se cruzarían con el camino entre $v_1$ y $v_3$ con nodos de color $c_1$ ó $c_3$. Eso no puede ser porque es una representación planar). Intercambio los colores en la componente conexa de $v_2$ de $H_{c_2 c_4}$ y queda libre $c_2$ para ponérselo a $v$.
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\begin{nota}
+    $H_{pq}$ es el subgrafo inducido por los vértices de color $p$ y los vértices de color $q$, dado un coloreo de $G$.
+\end{nota}

@@ -1,0 +1,85 @@
+\section{Práctica 8}
+
+\setcounter{subsection}{3}
+\subsection{}
+
+$\Longrightarrow$ )
+
+$G$ tiene un circuito euleriano, osea que si parto de un nodo $v_0$ puedo volver al mismo pasando por todas las aristas, sin repetir alguna. A su vez, todos los nodos de $G$ tienen grado par.
+
+Puede ocurrir que $G$ sea un circuito simple, en cuyo caso tomo $G$ como la única partición, o puede que no. En ese caso puedo formar un circuito simple $C_1$ con un conjunto de aristas de $G$, ya que sé que al haber un circuito hay al menos un circuito simple.
+
+Las aristas de $C_1$ forman un conjunto de la partición que busco. Sea $G_1 = G \setminus C_1$. Todos los vértices de $G_1$ siguen teniendo grado par. Si $G_1$ no tiene aristas ya tenemos la partición que buscábamos. Sino, seguro $G_1$ tiene un circuito simple $C_2$, por ser euleriano. Así iteramos hasta quedarnos sin aristas y nos queda la partición $\{C_1, ..., C_k\}$. \\
+
+$\Longleftarrow$ )
+
+$G$ puede particionarse en circuitos simples $\{C_1, ..., C_k\}$. Considero $G_0$ el grafo con los mismos nodos que $G$ pero sin aristas, sólo nodos aislados. Todos tienen grado 0, osea que todos son de grado par. Ahora agrego $C_1$. Como $C_1$ es ciclo simple, todos sus nodos tienen grado 2, por lo que agregar $C_1$ a $G_0$ forma un grafo $G_1$ en donde cada nodo aumenta de grado en 2 o permanece igual, por lo que son pares. Itero hasta agregar todos los circuitos.
+
+El grafo que se forma es $G$, es conexo y todos sus nodos son de grado par, por lo que $G$ es un grafo euleriano.
+
+\subsection{}
+
+$G$ es un grafo conexo con todos sus vértices de grado par, por lo tanto es un grafo euleriano. Entonces $G$ se puede particionar en ciclos simples.
+
+Para cualquier vértice $v \in G$ se sabe que todas sus aristas pertenecen a algún ciclo simple. Por cada arista de $v$ hay otra que también sale de $v$ que pertenece al mismo ciclo simple. Es decir que $v$ conecta $\frac{d(v)}{2}$ ciclos simples, ya que puedo elegir pares de aristas de $v$ que pertenecen al mismo ciclo.
+
+Al sacar uno de esos pares de aristas, es posible que se forme otra componente conexa porque ese par pertenece a un ciclo simple $C$, lo que hace que se forme un camino simple ya que las aristas que elimino son adyacentes. Para formarse otra componente conexa debe ser $v$ el único nodo que une a $C$ con $G \setminus C$. Si no es así, es porque hay otro ciclo que conecta a $C$ con $G \setminus C$.
+
+Entonces al eliminar $v$ pueden quedar a lo sumo la cantidad de ciclos simples que une $v$ de componentes conexas, es decir $\frac{d(v)}{2}$.
+
+Por lo tanto, $w(G - v) \leq \frac{d(v)}{2}$
+
+\setcounter{subsection}{6}
+\subsection{}
+
+\subsubsection{}
+
+$\Longrightarrow$ )
+
+Suponemos $G$ arbitrariamente atravesable desde $v_o$ y que $\exists C$ circuito simple que no contiene a $v_0$. Considero $G \setminus C$ (saco las aristas de $C$), donde todos los vértices tienen grado par y usando que $G$ euleriano es equivalente a $\exists$ partición de $E$ en circuitos simples, encuentro una partición en ciclos de cada componente conexa y obtengo una partición en ciclos simples de $E$ que contiene a $C$.
+
+Recorro las aristas de todos los ciclos de la partición que contiene a $v_0$, hasta terminar en $v_0$ y no quedan ,ás aristas adyacentes a $v_0$ por recorrer. Como me falta recorrer las aristas de $C$, este circuito no es euleriano. Absurdo. \\
+
+$\Longleftarrow$ )
+
+Veamos que el procedimiento siempre nos da un circuito euleriano:
+
+$G$ euleriano $\Longrightarrow$ todo vértice tiene grado par.
+
+Al ir construyendo el circuito del procedimiento se va formando un camino en el que eventualmente se forma un ciclo $C_1$ (sino habría un vértices de grado impar) que termina en $v_0$ (sino habría un ciclo que no contiene a $v_0$).
+
+Repitiendo el razonamiento, se forman ciclos simples disjuntos $C_1, ..., C_k$ que contienen a $v_0$ (y no hay más cuando termina el procedimiento).
+
+Igual que antes, puedo contruir una partición de ciclos simples que contengan a $C_1$ hasta $C_k$.
+
+Si el procedimiento no genera un circuito euleriano, $\exists$ una arista $e$ que no recorrí que pertenece a algún circuito de la partición $neq$ de los $c_i$. Absurdo porque ese circuito no contiene a $v_0$.
+
+\subsubsection{}
+
+Sea $C = \{C_1, ..., C_k\}$ una partición en ciclos simples de $E$. Cada ciclo aporta como mucho 2 al grado de $v$, cualquiera sea el $v \in V$ y todas las aristas están en algun ciclo $\Longrightarrow d(v) \leq 2k = d(v_0)$ ya que todo ciclo contiene a $v_0$ y son disjuntos.
+
+\subsection{}
+
+\subsubsection{}
+Para valores impares.
+
+\subsubsection{}
+Si. $K_2$.
+
+\subsection{}
+
+\subsubsection{}
+
+$\Longrightarrow$ )
+
+Sea $G$ un digrafo conexo que tiene un circuito euleriano, es decir que tiene un circuito que recorre todas las aristas sin pasar más de una vez por cada ninguna. 
+
+Como cada vértice $v \in G$ pertenece al circuito euleriano, por lo tanto si comienzo a recorrer el circuito partiendo desde $v$, por cada salida que tenga debe tener obligatoriamente una entrada, para poder formar el ciclo, y de la misma forma. Si no parto de $v$, por cada entrada que tenga tiene que tener una salida, para garantizar que se llegue al nodo desde donde se partió y formar el ciclo. \\
+
+$\Longleftarrow$ )
+
+Sea $G$ un digrafo conexo que cumple que $d_{in}(v) = d_{out}(v)$ $\forall$ vértice $v$. 
+
+\subsection{}
+
+Si un digrafo conexo tiene un circuito euleriano, significa que existe un ciclo dirigido que pasa por todas las aristas. Si un ciclo pasa por todas las aristas y el grafo es conexo, entonces pasa por todos los nodos. Tener un ciclo dirigido que pase por todos los nodos implica que se puede ir desde cualquier nodo a cualquier otro, siguiendo el ciclo dirigido. Lo que es lo mismo que decir que el grafo es fuertemente conexo.

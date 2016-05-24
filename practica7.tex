@@ -1,0 +1,23 @@
+\section{Práctica 7}
+
+\setcounter{subsection}{1}
+\subsection{}
+
+\subsubsection{}
+(A,B,1)(A,C,2)(C,B,-999)
+
+Si Dijkstra empieza desde $A$ nunca llega a la arista (B,C) ya que hace el siguiente recorrido: (A,B)(A,C) cuando el mejor camino sería (A,C)(C,B)
+
+\subsubsection{}
+Consiste en moverse entre los nodos yendo siempre al que menor camino total represente.
+
+\subsubsection{}
+Si ya que toma la mejor decisión, osea el mínimo camino, en cada iteración.
+
+\setcounter{subsection}{4}
+\subsection{}
+
+\subsubsection{}
+Se relajan todas las aristas una última vez. Si hubo algún cambio en las distancias, entonces hay un ciclo negativo.
+
+Si no todos los vértices son alcanzables se puede correr el algoritmo cuantas veces sea necesario para cada nodo con lognitud $\infty$. Para evitar que la complejidad del algoritmo incremente es necesario que el bucle principal finalice si es que no se detectan cambios en cuanto a la iteración anterior. De esta forma se evita repetir la relajacíon de aristas $n^2$ veces.
