@@ -82,4 +82,54 @@ Sea $G$ un digrafo conexo que cumple que $d_{in}(v) = d_{out}(v)$ $\forall$ vér
 
 \subsection{}
 
-Si un digrafo conexo tiene un circuito euleriano, significa que existe un ciclo dirigido que pasa por todas las aristas. Si un ciclo pasa por todas las aristas y el grafo es conexo, entonces pasa por todos los nodos. Tener un ciclo dirigido que pase por todos los nodos implica que se puede ir desde cualquier nodo a cualquier otro, siguiendo el ciclo dirigido. Lo que es lo mismo que decir que el grafo es fuertemente conexo.
+\begin{lema}
+    Todo digrafo conexo que tiene un circuito euleriano orientado es fuertemente conexo.
+\end{lema}
+
+\begin{proof}
+    Si un digrafo conexo tiene un circuito euleriano, significa que existe un ciclo dirigido que pasa por todas las aristas. Si un ciclo pasa por todas las aristas y el grafo es conexo, entonces pasa por todos los nodos. Tener un ciclo dirigido que pase por todos los nodos implica que se puede ir desde cualquier nodo a cualquier otro, siguiendo el ciclo dirigido. Lo que es lo mismo que decir que el grafo es fuertemente conexo.
+\end{proof}
+
+\setcounter{subsection}{11}
+\subsection{}
+Porque es un grafo bipartito con una cantidad impar de nodos.
+
+\setcounter{subsection}{13}
+\subsection{}
+
+\begin{lema}
+    Si un digrafo es completamente conexo tiene un camino hamiltoniano orientado.
+\end{lema}
+
+\begin{proof}
+    Tomo un nodo cualquiera. Si es el único ya se que cumple. Sino, tomo otro nodo cualquiera. Considero el arco que los une como el camino hamiltoniano $C$. Tomo otro nodo $n$. Lo que voy a hacer es insertarlo en el camino hamiltoniano. Pueden darse varias posibilidades:
+
+    Ahora recorro $C$ buscando un nodo que contenga un arco desde $n$. Sean $v_1, ..., v_k$ los nodos de $C$ siendo $v_1$ el principio y $v_k$ el final.
+
+    \begin{itemize}
+        \item Si hay un arco desde $n$ a $v_1$, en este caso $n$ es el nuevo principio. Los uno por medio de ese arco.
+        \item Si hay un arco desde $v_k$ hacia $n$, en este caso $n$ es el nuevo final de $C$. Los uno por medio de ese arco.
+        \item De lo contrario, recorro los nodos hasta que en $v_i$ encuentre un arco que llegue desde $n$. Una vez que lo encuentro (observemos que este arco debe existir necesariamente ya que si no hubieran arcos que salgan de $n$ entonces todos llegan a $n$ por lo que sería el nuevo final del camino hamiltoniano), inserto a $n$ en el camino. Es decir, elimino el arco que $(v_{i-1}, v_i)$ y agrego $(v_{i-1}, n)$ y $(n, v_i)$. Sabemos que existe $(v_{i-1}, n)$ porque si no, existiría $n, v_{i-1}$ por ser completamente conexo, y por lo tanto hubiésemos elegido ese nodo para hacer la inserción.
+    \end{itemize}
+\end{proof}
+
+\subsection{}
+
+\begin{lema}
+    Un grafo bipartito con un número impar de vértices no contiene un camino hamiltoniano.
+\end{lema}
+
+\begin{proof}
+    Supongo que tengo un grafo bipartito completo. Comienzo a formar el camino desde cualquier nodo $n_0$. Cada nodo que avance en el camino hace que necesariamente alterne de partición. Como tengo una cantidad impar de nodos hay una de las particiones que tiene mayor cantidad de nodos que la otra. Llamemos $P$ a la mayor y $p$ a la menor.
+
+    Llegará un momento en el que me haya recorrido todos los nodos en $p$ y por lo tanto no pueda continuar mi camino desde $n_i \in P$.
+
+    \begin{itemize}
+        \item Si $n_0 \in P$ entonces no existe una arista entre $n_0$ y $n_i$ porque ambos pertenecen a $P$ y por lo tanto no puedo cerrar el circuito.
+        \item Si $n_0 \in p$ entonces habré tomado igual cantidad de nodos de $p$ que de $P$. Pero $\#P > \#p$ entonces aún quedan nodos de $P$ por recorrer. No puedo recorrerlos ya que no existen arcos entre $n_i$ y ninguno de ellos porque todos pertenecen a $P$ y por lo tanto no puedo cerrar el circuito.
+    \end{itemize}
+\end{proof}
+
+\subsection{}
+
+Si $G$ es un grafo con $n \geq 4$ y $d$ (grado mínimo) $\geq n - 2$ entonces $G$ tiene un circuito hamiltoniano, ya que como $n \geq 3$ y $d(v) \geq \frac{n}{2}$, $G$ cumple las condiciones del Teorema de Dirac. 

@@ -1,0 +1,47 @@
+\section{Práctica 9}
+
+\setcounter{subsection}{1}
+\subsection{}
+
+
+
+\subsection{}
+
+\subsubsection{}
+$r = m - n + c + 1$ donde $c$ es el número de componentes conexas
+
+\subsubsection{}
+Sea un grafo planar no conexo $G_N$, puedo construir un grafo planar conexo $G_C$ uniendo nodos de componentes conexas distitnas por medio de aristas. Llamemos $m_a$ a esta cantidad de aristas agregadas.
+
+Sea $m$ la cantidad de aristas de $G_C$ y $n$ la cantidad de nodos, se cumple que $m \leq 3n - 6$. Ahora, $G_N$ tiene la misma cantidad de nodos pero $m_a$ aristas menos, es decir, $m - m_a$ aristas. Por lo tanto, $m - m_a \leq m \leq 3n - 6$.
+
+\subsection{}
+
+\begin{lema}
+    Todo grafo planar donde todo vértice tiene grado mayor o igual a 3, se verifica que $m \leq 3r - 6$.
+\end{lema}
+
+\begin{proof}
+    ~
+
+    $3r - 6 = 3(m - n + 2) - 6 = 3m - 3n$
+
+    Quiero ver que $m \leq 3m - 3n$
+
+    Lo que es lo mismo que $\frac{3n}{2} \leq m$
+
+    Como cada vértice tiene grado mayor o igual a 3, $m = \frac{\sum_{i=1}^{n}d(v_i)}{2} \geq \frac{\sum_{i=1}^{n}3}{2} = \frac{3n}{2}$.
+\end{proof}
+
+\subsection{}
+
+\subsubsection{}
+Supongo un grafo $G = (V, E)$ donde todos sus vértices tienen grado mayor o igual a 6. Como mínimo debe tener 7 nodos, todos conectados entre sí. 
+
+Este grafo no es planar ya que no cumple con el lema \ref{planarMayor3}.
+
+Agrego un nodo $n$ a $V$, de manera que agregue la menor cantidad de aristas posibles. Para esto voy a elegir 6 nodos $v_a, v_b, v_c, v_d, v_e, v_f \in V$ donde $(v_a, v_b), (v_c, v_d), (v_e, v_f) \in E$. Agrego al grafo las aristas $(v_a, n), (v_b, n), (v_c, n), (v_d, n), (v_e, n), (v_f, n)$ y puedo sacar $(v_a, v_b), (v_c, v_d), (v_e, v_f)$ de $E$ ya que al hacerlo cada nodo sigue vuelve a tener grado 6.
+
+El numero de nodos aumenta en 1 y el de aristas aristas en 3. Esta es la cantidad mínima de aristas que puedo agregar por cada nodo. En principio $G$ cumplía que $m = \frac{7 \times 6}{2} = 21 = 3n$, entonces si por cada nodo que agrego la cantidad de aristas incrementa como mínimo en 3, entonces $m \geq 3n$ pero entonces $m \not \leq 3n - 6$. Lo que significa que $G$ no puede ser planar si todos sus vértices tienen grado mayor o igual a 6.
+
+Por lo tanto un grafo planar tiene al menos un vértice de grado menor o igual a 5.

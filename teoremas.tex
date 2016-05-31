@@ -3,7 +3,9 @@
 \subsection{Árboles}
 
 \begin{lema}
+\label{eCircSimple}
     $G = (V, X)$ grafo conexo y $e \in X$. $G - e$ es conexo $\Longleftrightarrow e \in$ circuito simple de $G$    
+
 \end{lema}
 
 \begin{proof}
@@ -27,6 +29,7 @@
 \end{proof}
 
 \begin{lema}
+\label{concatCircSimple}
     La concatenación de dos caminos distintos entre un par de vértices contiene un circuito simple.
 \end{lema}
 
@@ -48,7 +51,7 @@
 
 $G$ árbol por definición $\Longrightarrow G$ conexo y sin ciclos simples sea $e \notin G$, $G + e$ es conexo.
 
-$(G + e) - e = G$ es conexo, entonces por Lema 1, $e$ pertenece a un circuito simple de $G + e$.
+$(G + e) - e = G$ es conexo, entonces por Lema \ref{eCircSimple}, $e$ pertenece a un circuito simple de $G + e$.
 
 Falta ver que sólo hay un circuito en $G + e$. Si hay en $G + e$ algún circuito al cual $\notin e$, ese circuito también estaría en $G$. Pero no puede ser porque $G$ es árbol.
 
@@ -60,7 +63,7 @@ Si hay 2 o más circuitos en $G + e$, como $e$ tiene que pertenecer a todos, $C_
 
 Sea $G$ que cumple 2). Suponemos que para $v, w$ no existe camino. $G + (v, w)$ tiene ciclo al cual $\in (v, w) + C$. Pero entonces $C - (v, w)$ es camino entre $v$ y $w$ en $G$. Absurdo. Entre todo par de vértices por lo menos existe un camino.
 
-Supongo que existen dos caminos distintos entre $v$ y $w$. Por Lema 2 la concatenación de esos caminos contiene un circuito. Absurdo porque $G$ no tiene circuitos.
+Supongo que existen dos caminos distintos entre $v$ y $w$. Por Lema \ref{concatCircSimple} la concatenación de esos caminos contiene un circuito. Absurdo porque $G$ no tiene circuitos.
 
 ~
 
@@ -76,16 +79,17 @@ Sean $u, v$ dos vértices cualquiera y $e$ una arista del único camino simple e
 
 $G$ cumple 4), entonces es conexo.
 
-Si hubiese un circuito en $G$, por Lema 1 al sacar una arista de ese circuito el grafo seguiría siendo conexo. Absurdo porque $G$ cumple 4) $\Longrightarrow G$ es árbol.
+Si hubiese un circuito en $G$, por Lema \ref{eCircSimple} al sacar una arista de ese circuito el grafo seguiría siendo conexo. Absurdo porque $G$ cumple 4) $\Longrightarrow G$ es árbol.
 \end{proof}
 \begin{lema}[Hojas]
+\label{hojas}
     Todo árbol no trivial tiene al menos dos hojas
 \end{lema}
 
 \begin{proof}
     Sea $P$ un camino ``no extensible en los extremos'' (no incluido en un camino más grande), llamamos $u$ y $v$ a los extremos del camino.
 
-    No puede estar fuera del camino porque $P$ es maximal, no puede estar dentro ya que por Lema 2, se formaría un ciclo.
+    No puede estar fuera del camino porque $P$ es maximal, no puede estar dentro ya que por Lema \ref{concatCircSimple}, se formaría un ciclo.
 \end{proof}
 
 \begin{lema}
@@ -103,7 +107,7 @@ Si hubiese un circuito en $G$, por Lema 1 al sacar una arista de ese circuito el
 
     HI: Si $G$ es árbol con $n$ nodos entonces se cumple $m = n - 1$
 
-    Sea $G$ árbol con $n$ nodos. Sea $v$ hoja de $G$ (seguro existe por Lema 3), $G - v$ es árbol porque como $G$ no tenía circuitos $G - v$ tampoco, y como $v$ es hoja, tiene grado 1, por lo tanto $G - v$ es conexo.
+    Sea $G$ árbol con $n$ nodos. Sea $v$ hoja de $G$ (seguro existe por Lema \ref{hojas}), $G - v$ es árbol porque como $G$ no tenía circuitos $G - v$ tampoco, y como $v$ es hoja, tiene grado 1, por lo tanto $G - v$ es conexo.
 
     $G - v$ tiene $n - 1$ nodos, aplicamos HI. Entonces $G - v$ tiene $n - 2$ aristas. Como $G$ tiene exactamente una arsista más que $G - v$, $G$ tiene $n - 2 + 1 = n - 1$ aristas.
 \end{proof}
@@ -230,6 +234,17 @@ $G = (V, E)$ conexo, $s, t \in V$, son equivalentes:
     $\Longleftarrow$ ) pendiente...
 \end{proof}
 
+\subsection{Grafos planares}
+
+\begin{teo}[Euler, 1752]
+    Si $G$ es un grafo conexo planar entonces cualquier representación planar de $G$ determina $r = m - n + 2$ regiones en el plano (ecuación poliedral de Euler).
+\end{teo}
+
+\begin{lema}
+\label{planarMayor3}
+    Si $G$ es conexo y planar con $n \leq 3$, entonces $m \leq 3n - 6$.
+\end{lema}
+
 \subsection{Coloreo}
 
 \begin{teo}[Headwood, 1890]
@@ -280,3 +295,25 @@ $G = (V, E)$ conexo, $s, t \in V$, son equivalentes:
 \begin{nota}
     $H_{pq}$ es el subgrafo inducido por los vértices de color $p$ y los vértices de color $q$, dado un coloreo de $G$.
 \end{nota}
+
+\subsection{Cografos}
+
+\begin{prop}
+    $G$ es cografo $\Longleftrightarrow$ no tiene como subgrafo inducido $P_4$, el camino de 4 vértices.
+\end{prop}
+
+\begin{obs}
+    Un subgrafo inducido de un cografo es un cografo.
+\end{obs}
+
+\begin{proof}
+    ~
+
+    Si $G$ es cografo entonces $G$ o $\overline{G}$ no es conexo, o $G$ es trivial.
+
+    $\overline{P_4} = P_4$ es conexo y no trivial $\Longrightarrow$ no es cografo.
+
+    Sea $G$ un grafo tal que $G$ es conexo, $\overline{G}$ es conexo, $G$ no es trivial y $\forall v \in V$ $G - \{v\}$ ó $\overline{G} - \{v\}$ (el que no sea conexo) Sin perdida de generalidad supongo $G - \{v\}$ no conexo. 
+
+    Como $\overline{G}$ es conexo, $v$ tiene un vecino en $\overline{G}$, lo llamo $z$.
+\end{proof}
