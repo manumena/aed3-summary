@@ -1,1 +1,62 @@
 \section{Ejercicios extra}
+
+\subsection{}
+Si tengo un poliedro donde cada cara tiene una cantidad impar de lados, entonces tiene una cantidad par de caras.
+
+Sean $P_1, ..., P_k$ las caras del poliedro vistas como grafos. Considero $G = P_1 U ... U P_k$. G es planar porque $P_1, ..., P_2$ es una representación planar.
+
+Sea $f_i$ la region interior delimitada por $P_i$, las regiones de $G$ son $f_1, ..., f_k$ más una exterior $f_{ext}$.
+
+Se tiene 
+
+\begin{center}
+    $2n(G) = \sum_{f \in F}|f| = |f_1| + ... + |f_k| + |f_{ext}| = 2(|f_1| + ... + |f_k|)$
+
+    $\Longrightarrow n(G) = |f_1| + ... + |f_k|$
+
+    $n(G) cong_mod_2 |f_1| + ... + |f_k|$
+
+    $n(G) cong_mod_2 1 + ... + 1 (k veces)$
+
+    $n(G) cong_mod_2 k$
+\end{center}
+
+Como $n(G) = 2 \times \#$aristas del poliedro, entonces $n(G)$ es par y por lo tanto $k$ es par.
+
+\subsection{}
+Todo grafo es $d-$regular $\Longleftrightarrow$ todos sus vértices tienen grado $d$.
+
+\subsubsection{}
+Demostrar que es un grafo es planar y $4-$regular, entonces tiene al menos 6 vértices.
+
+~
+
+Sea $G$ planar $4-$regular, quiero ver que $n \leq 6$.
+
+$2m = \sum_{v \in V}d(v) = 4 + ... + 4$ (n veces)
+
+$2m = 4n \Longrightarrow m = 2n$
+
+Como $n \geq 3$ por ser $G$ $4-$regular, $m \leq 3n - 6 \Longrightarrow 2n \leq 3n - 6 \Longrightarrow 6 \leq n$.
+
+\subsubsection{}
+Exhibir un grafo planar $4-$regular de 6 vértices. Justificar.
+
+~
+
+$G$ es $4-$regular de $n = 6 \Longrightarrow \overline{G}$ es $1-$regular de $n = 6$
+
+\subsubsection{}
+Exhibir todos los grafos no isomorfos $4-$regulares de 7 vértices. Justificar.
+
+~
+
+$G$ es $4-$regular de 7 vértices $\Longrightarrow \overline{G}$ $2-$regular de 7 vértices.
+
+Proposicion: $H$ es $2-$regular $\Longrightarrow H$ es unión de circuitos simples.
+
+\subsubsection{}
+Demostrar que no existen grafos planares $4-$regulares de 7 vértices.
+
+\subsubsection{}
+Exhibir todos los $n$ para los cuales existe un grafo planar $4-$ regular de 7 vértices. Justificar.

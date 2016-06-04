@@ -36,7 +36,7 @@ Sea $m$ la cantidad de aristas de $G_C$ y $n$ la cantidad de nodos, se cumple qu
 \subsection{}
 
 \subsubsection{}
-Supongo un grafo $G = (V, E)$ donde todos sus vértices tienen grado mayor o igual a 6. Como mínimo debe tener 7 nodos, todos conectados entre sí. 
+Supongo un grafo $G = (V, E)$ donde todos sus vértices tienen grado mayor o igual a 6. Como mínimo debe tener 7 nodos, todos conectados entre sí. Tomamos $G = K_7$ por ser el de menor cantidad de nodos y aristas.
 
 Este grafo no es planar ya que no cumple con el lema \ref{planarMayor3}.
 
@@ -45,3 +45,40 @@ Agrego un nodo $n$ a $V$, de manera que agregue la menor cantidad de aristas pos
 El numero de nodos aumenta en 1 y el de aristas aristas en 3. Esta es la cantidad mínima de aristas que puedo agregar por cada nodo. En principio $G$ cumplía que $m = \frac{7 \times 6}{2} = 21 = 3n$, entonces si por cada nodo que agrego la cantidad de aristas incrementa como mínimo en 3, entonces $m \geq 3n$ pero entonces $m \not \leq 3n - 6$. Lo que significa que $G$ no puede ser planar si todos sus vértices tienen grado mayor o igual a 6.
 
 Por lo tanto un grafo planar tiene al menos un vértice de grado menor o igual a 5.
+
+\subsubsection{}
+Supongo un grafo $G$ planar donde todo vértice tiene grado mayor o igual a 5.
+
+Por lema \ref{aristasGrados} se que $m = \frac{\sum_{i = 1}^{n}d(v_i)}{2} \geq \frac{5n}{2}$.
+
+Y por lema \ref{planarMayor3} se que $m \leq 3n - 6$.
+
+Entonces $\frac{5n}{2} \leq 6n - 6$, lo que es lo mismo que $n \geq 12$. Por lo tanto $G$ tiene mas de 11 vértices.
+
+----------------------------------
+
+Supongo un grafo $G = (V, E)$ donde todos sus vértices tienen grado mayor o igual a 5. Como mínimo debe tener 6 nodos, todos conectados entre sí. Tomamos $G = K_6$ por ser el de menor cantidad de nodos y aristas.
+
+Este grafo no es planar ya que no cumple con el lema \ref{planarMayor3}.
+
+Agrego un nodo $n$ a $V$, de manera que agregue la menor cantidad de aristas posibles. Para esto voy a elegir 5 nodos $v_a, v_b, v_c, v_d, v_e \in V$ donde $(v_a, v_b), (v_c, v_d) \in E$. Agrego al grafo las aristas $(v_a, n), (v_b, n), (v_c, n), (v_d, n), (v_e, n)$ y puedo sacar $(v_a, v_b), (v_c, v_d)$ de $E$ ya que al hacerlo cada nodo sigue vuelve a tener grado 5, con excepción de $v_e$ que tiene grado 6.
+
+El numero de nodos aumenta en 1 y el de aristas aristas en 3. Ahora puedo repetir el proceso anterior, pero esta vez no voy a elegir a $v_e$. Voy a elegir otros 5 nodos $v_a', v_b', v_c', v_d', v_e' \in V$ donde ninguno sea $v_e$ y donde $(v_a', v_b'), (v_c', v_d'), (v_e', v_e) \in E$. Luego agrego $(v_a', n), (v_b', n), (v_c', n), (v_d', n), (v_e', n)$ y saco $(v_a', v_b'), (v_c', v_d'), (v_e', v_e)$. En esta iteración pude sacar 3 aristas y agregar 5, por lo que se agregar 2 efectivamente. Esta es la manera de agregar la cantidad mínima de aristas por nodo.
+
+De esta forma puedo formar un grafo que cumpla que todos sus vértices tienen grado mayor o igual a 5 con la menor cantidad de aristas posibles para cada $n$.
+
+En principio $G$ cumplía que $m = \frac{6 \times 5}{2} = 15 = 3n$, entonces si por cada 2 nodos que agrego la cantidad de aristas incrementa en 5
+
+\subsubsection{}
+Sea $G$ un grafo con 11 o más vértices que verifica que $m \leq 3n - 6$, es decir es planar. Quiero ver que $\overline{G}$ no es planar.
+
+Sea $\overline{m}$ la cantidad de aristas de $\overline{G}$, sabemos que $\overline{m} = \frac{n(n - 1)}{2} - m$, y por lo tanto $\overline{m} \geq \frac{n(n - 1)}{2} - 3n + 6$.
+
+Para que $\overline{G}$ sea planar debe cumplirse que 
+
+\begin{center}
+    $\frac{n(n - 1)}{2} - 3n + 6 \leq \overline{m} \leq 3n - 6$
+
+
+
+\end{center}
