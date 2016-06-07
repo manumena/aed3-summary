@@ -70,6 +70,15 @@ De esta forma puedo formar un grafo que cumpla que todos sus vértices tienen gr
 En principio $G$ cumplía que $m = \frac{6 \times 5}{2} = 15 = 3n$, entonces si por cada 2 nodos que agrego la cantidad de aristas incrementa en 5
 
 \subsubsection{}
+
+\begin{lema}
+	si $G$ tiene 11 vértices, $G$ o su complemento son no planares.
+\end{lema}
+
+
+\begin{proof}
+
+~
 Sea $G$ un grafo con 11 o más vértices que verifica que $m \leq 3n - 6$, es decir es planar. Quiero ver que $\overline{G}$ no es planar.
 
 Sea $\overline{m}$ la cantidad de aristas de $\overline{G}$, sabemos que $\overline{m} = \frac{n(n - 1)}{2} - m$, y por lo tanto $\overline{m} \geq \frac{n(n - 1)}{2} - 3n + 6$.
@@ -79,9 +88,24 @@ Para que $\overline{G}$ sea planar debe cumplirse que
 \begin{center}
     $\frac{n(n - 1)}{2} - 3n + 6 \leq \overline{m} \leq 3n - 6$
 
-
-
+    $\frac{n(n - 1)}{2} - 3n + 6 \leq 3n - 6$
 \end{center}
 
+Luego,
+
+\begin{center}
+	$\frac{1}{2}n^2 - \frac{13}{2}n + 12 \leq 0$
+\end{center}
+
+Entonces,
+
+\begin{center}
+	$2.228 \leq n \leq 10.772$
+\end{center}
+
+Esto nos dice que para que $\overline{G}$ sea planar, debe verificarse que $3 \leq n \leq 10$.
+
+Por lo tanto si $\overline{G}$ tiene $n \geq 11$, no es planar. Y queda demostrado que si $G$ tiene 11 vértices, $G$ o $\overline{G}$ son no planares.
+\end{proof}
 \subsection{}
 No. Pero sí es cierto que un grafo es planar $\Longleftrightarrow$ no contiene ningún subgrafo homeomorfo a $K_{33}$ ó $K_5$.
