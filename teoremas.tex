@@ -7,6 +7,16 @@
     Sea $G$ un grafo con $m$ aristas y $n$ nodos, se verifica que $m = \frac{\sum_{i = 1}^{n}d(v_i)}{2}$.
 \end{lema}
 
+\begin{prop}
+\label{compConexo}
+    $G$ no conexo $\Longrightarrow \overline{G}$ es conexo.
+\end{prop}
+
+\begin{prop}
+\label{n5CicloConexo}
+    Si $n \geq 5 \Longrightarrow \overline{C_n}$ es conexo.
+\end{prop}
+
 \subsection{Árboles}
 
 \begin{lema}
@@ -263,6 +273,35 @@ Un grafo es planar $\Longleftrightarrow$ no contiene ningún subgrafo homeomorfo
 
 \subsection{Coloreo}
 
+\subsubsection*{Coloreo de nodos}
+Sea $G = (V, E)$ un grafo. Un coloreo (válido) de los nodos de $G$ es una función $f : V \longrightarrow C$ tal que $\forall (u, v) \in E$ $f(u) \not= f(v)$. Usualmente $C = [1, k] \subset \nat$ para algún $k$.
+
+\subsubsection*{Número cromático}
+Sea $G = (V, E)$ un grafo, el número cromático de $G$ es $\chi(G) = min |C|$.
+
+Dado $G$, ¿cómo demostramos que $chi(G) = k$?
+
+\begin{itemize}
+    \item{
+        $\chi(G) \leq k$
+        \begin{itemize}
+            \item Exhibir un coloreo que use a lo sumo $k$ colores.
+            \item Usar propiedades.
+        \end{itemize}
+    }
+    \item{
+        $\chi(G) \geq k$
+        \begin{itemize}
+            \item Demostrar que $\not \exists$ coloreo de $k - 1$ colores o menos.
+            \item Usar propiedades.
+        \end{itemize}
+    }
+\end{itemize}
+
+\begin{defi}
+    La frontera de una región es el conjunto de lados que tocan la región.
+\end{defi}
+
 \begin{teo}[Headwood, 1890]
     Si $G$ es un grafo planar, entonces $\chi(G) \leq 5$.
 \end{teo}
@@ -293,7 +332,7 @@ Un grafo es planar $\Longleftrightarrow$ no contiene ningún subgrafo homeomorfo
         2 posibilidades:
 
         \begin{enumerate}
-        \item En el 5-coloreo de $G - v$ $\exists u_1, u_2 \in N(v)$ con igual color. Queda un color libre para $v$ para hacer un 5-coloreo de $G$.
+        \item En el 5-coloreo de $G - v$ $\exists$ $u_1, u_2 \in N(v)$ con igual color. Queda un color libre para $v$ para hacer un 5-coloreo de $G$.
 
         \item En el 5-coloreo de $G - v$ todos los vértices adyacentes a $v$ tienen distinto color. 
 
@@ -311,6 +350,50 @@ Un grafo es planar $\Longleftrightarrow$ no contiene ningún subgrafo homeomorfo
 \begin{nota}
     $H_{pq}$ es el subgrafo inducido por los vértices de color $p$ y los vértices de color $q$, dado un coloreo de $G$.
 \end{nota}
+
+\begin{prop}
+\label{triMas1}
+    $\chi(G) \leq \Delta(G) + 1$.
+\end{prop}
+
+\newtheorem*{brookes}{Teorema de Brookes}
+\begin{brookes}
+    Si $G$ es conexo, no completo, ni ciclo impar $\Longrightarrow \chi(G) \leq \Delta(G)$.
+\end{brookes}
+
+\begin{prop}
+    $G$ planar $\Longrightarrow \chi(G) \leq 4$.
+\end{prop}
+
+\begin{prop}
+    $G$ bipartito $\Longrightarrow \chi(G) \leq 2$.
+\end{prop}
+
+\begin{prop}
+\label{cromSub}
+    $H$ subgrafo de $G \Longrightarrow \chi(H) \leq \chi(G)$.
+\end{prop}
+
+\begin{prop}
+    $\chi(G) \geq \omega(G)$.
+\end{prop}
+
+\begin{prop}
+    $G$ no trivial, $v \in V(G) \Longrightarrow \chi(G - v) = \chi(G)$ ó $\chi(G - v) = \chi(G) - 1$.
+
+    Lo que es lo mismo que $\chi(G) - 1 \leq \chi(G - v) \leq \chi(G)$.
+
+    Y entonces $\chi(G - v) \leq \chi(G) \leq \chi(G - v) + 1$.
+\end{prop}
+
+\begin{proof}
+    $\chi(G)$ es un coloreo óptimo. Al sacar $v$ de $G$ puede no disminuir el número cromático si es que hay otro nodo con el mismo color que $v$, de lo contrario disminuye en 1. Ahora veamos que efectivamente disminuye en 1 y no en mas.
+\end{proof}
+
+\begin{lema}
+\label{chiMaxCC}
+    Si $C_1, ..., C_t$ son las componentes conexas de $G \Longrightarrow \chi(G) = max \{\chi(C_i)\}_{1 \leq i \leq t}$
+\end{lema}
 
 \subsection{Cografos}
 

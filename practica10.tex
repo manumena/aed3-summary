@@ -22,3 +22,105 @@ Se agrega un nodo al grafo por cada curso en donde dos cursos comparten una aris
 
 \subsection{}
 Se arma un grafo a partir de la matriz de distancias en donde cada nodo es una torre y dos nodos comparten una arista entre sí en caso de tener una distancia mayor o igual a 50. El número cromático de este grafo es el menor número de frecuencias distintas.
+
+\subsection{}
+\setcounter{subsubsection}{1}
+\subsubsection{}
+Sea $G$ un grafo $k-$cromático, elijo un vértice $v in G$ tal que $G - v$ es $k-$cromático. Lo saco de $G$ e itero hasta no poder encontrar un vértice que cumpla esa condición. El grafo resultante es $k-$cromático crítico.
+
+\subsection{}
+Si $G$ es $k-$cromático y color crítico entonces:
+
+\begin{enumerate}[label=\alph*)]
+	\item {
+		$G$ es conexo.
+
+		\begin{proof}
+			Supongo $G$ no conexo, $C_1, ..., C_t$ con $T \geq 2$ las componentes conexas de $G$. 
+
+			Por lema \ref{chiMaxCC} sabemos que $\chi(G) = max \{\chi(C_i)\}_{1 \leq i \leq t}$. Entonces puedo tomar un $C_j$ tal que no sea el que tenga el número cromático máximo y sacarle un nodo, sin que disminuya el número cromático de $G$. Pero eso es absurdo porque por ser color crítico si saco un vértice su número cromático debe decrementar.
+		\end{proof}
+	}
+	\item{
+		Todo vértice de $G$ tiene grado mayor o igual a $k - 1$.
+
+		\begin{proof}
+			Supongamos que existe $v$ tal que $d(v) < k - 1$. Consideremos $G - v$. $\chi(G - v) = k - 1$ por ser color crítico.
+
+			Entonces existe un $k-1-$coloreo $f$ de $G - v$.
+
+			$f: V \longrightarrow \{1, ..., k - 1\}$
+
+			Como $d(v) < k - 1$, $\exists q \in {1, ..., k - 1} / f(w) \not= q \forall w$ vecino de $v$.
+
+			Definimos $f'$ coloreo de $G$ como $f'(v) = q$ y $f'(v) = f(w)$ sino $f'$ es $k - 1$ coloreo de $G$
+
+			\begin{itemize}
+				\item $v-w$ no traen problemas por la elección de $q$.
+				\item $w-w'$ estamos(??) en $f$
+			\end{itemize}
+
+			Absurdo ($\chi(G) = k > k - 1$).
+		\end{proof}
+	}
+	\item{
+		$G$ no tiene ningún vértice que al sacarlo quede disconexo.
+
+		\begin{proof}
+			Por absurdo, supongamos que $G - v$ es no conexo.
+
+			pendiente...
+		\end{proof}
+	}
+\end{enumerate}
+
+\setcounter{subsection}{12}
+\subsection{}
+\begin{lema}
+Sea $G$ regular de $n$ nodos tal que $\chi(G) + \chi(\overline{G}) = n + 1 \Longrightarrow G = n K_1$ ó $G = K_n$ ó $G = C_n$ con $n$ impar.
+\end{lema}
+
+\begin{proof}
+	
+	~
+
+	Por absurdo supongo que existe $G$ reular de $n$ nodos con $\chi(G) + \chi(\overline{G}) = n + 1$ y $G \not= n K_1$ y $G \not= K_n$ y $G$ no es $C_n$ con $n$ impar. Es decir, se cumple esto:
+
+	\begin{enumerate}[label=\alph*)]
+		\item $G$ de $n$ vértices y para algún $d$, $G$ es $d-$regular (equivalentemente $\overline{G}$ es $(n - 1 - d)-$regular).
+		\item $\chi(G) + \chi(\overline{G}) = n + 1$.
+		\item $G \not= n K_1$ (equivalentemente $\overline{G} \not= K_n$).
+		\item $G \not= K_n$ (equivalentemente $\overline{G} \not= n K_1$).
+		\item $G \not= C_n$ con $n$ impar.
+	\end{enumerate}
+
+	Quiero aplicar el teorema de Brookes a $G$ ó a $\overline{G}$. Necesito grafo conexo.
+
+	~
+
+	Caso 1: $G$ conexo.
+
+	\begin{itemize}
+		\item ¿$G$ es conexo? Si, por que estoy en el caso 1.
+		\item ¿$G$ es no completo? Si, por d).
+		\item ¿$G$ no es un ciclo impar? Si, por e).
+	\end{itemize}
+
+	$n + 1 = \chi(G) + \chi(\overline{G}) \leq \Delta(G) + \Delta(\overline{G}) + 1 = d + n - 1 - d + 1 = n$. Absurdo.
+
+	~
+
+	Caso 2: $G$ no conexo
+
+	\begin{itemize}
+		\item ¿$\overline{G}$ es conexo? Si, por la propiedad \ref{compConexo}.
+		\item ¿$\overline{G}$ es no completo? Si, por e).
+		\item {
+			¿$\overline{G}$ no es un ciclo impar?
+
+			$n = 3$ ¿$\overline{G} \not= C_3$? Si, por $G \not= 3 K_1$.
+
+			$n \geq 5$ ¿$\overline{G} \not= C_n$ con $n$ impar? Si, por propiedad \ref{n5CicloConexo} y $G$ no conexo.
+		}
+	\end{itemize}
+\end{proof}
