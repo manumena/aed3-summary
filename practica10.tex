@@ -74,7 +74,6 @@ Si $G$ es $k-$cromático y color crítico entonces:
 	}
 \end{enumerate}
 
-
 \setcounter{subsection}{11}
 \subsection{}
 \subsubsection{}
@@ -160,19 +159,41 @@ Demostración alternativa de $n \leq \chi(G) \times \chi(\overline{G})$:
 \begin{proof}
 
 	~
-	
+
 	Por b), $n \leq \chi(G) \times \chi(\overline{G})$.
 
 	$\sqrt{n} \leq \sqrt{\chi(G) \times \chi(\overline{G})} \leq \frac{\chi(G) + \chi(\overline{G})}{2} \Longrightarrow 2 \sqrt{n} \leq \chi(G) + \chi(\overline{G})$
 \end{proof}
 
 \subsection{}
+\begin{prop}
+	$\chi(G + H) = \chi(G) + \chi(H)$
+\end{prop}
+
+\begin{proof}
+	Sean los grafos $G$ y $H$, considero $G + H$. Se que cada vértice $v_i \in G$ comparte una arista con cada vértice $u_j \in H$ debido al join. Entonces $v_i$ debe tener un color distinto a todos los $u_j$ para formar un coloreo válido. Luego, todos los $v_i$ tienen colores distintos a cualquier $u_j$, por lo que quedan $G$ y $H$ con colores distintos. Por lo tanto $\chi(G + H) = \chi(G) + \chi(H)$.
+\end{proof}
+
+\begin{cor}
+	Si $G$ y $H$ son críticos, considerando $G + H$, $G$ y $H$ no comparten ningún color debido a que todos los vértices de uno comparten una arista con todos los del otro. Entonces el join no afecta al coloreo de $G$ o de $H$, se mantiene, por lo que se mantiene el color crítico de ambos. Luego, $G + H$ es color crítico.
+\end{cor}
+
+\subsection{}
 \begin{lema}
-Sea $G$ regular de $n$ nodos tal que $\chi(G) + \chi(\overline{G}) = n + 1 \Longrightarrow G = n K_1$ ó $G = K_n$ ó $G = C_n$ con $n$ impar.
+	Para cualquier conjunto independiente $S$ de un grafo color critico $G$ se cumple que $\chi(G \setminus S) = \chi(G - 1)$.
 \end{lema}
 
 \begin{proof}
-	
+	Como $G$ es color crítico, cualquier vértice que saque del grafo hace que su número cromático disminuya en exactamente 1. Si tomo un conjunto independiente $S \subset G$ y elimino $S$ de $G$, es seguro que $\chi(G \setminus S) < \chi(G)$ ya que $G$ es color crítico. Ahora, como $S$ cumple la particularidad de que al ser independiente puedo asignar el mismo color a todos sus nodos puesto que no existen aristas entre dos nodos pertenecientes a $S$. Por lo tanto, se que al eliminar cualquier otro nodo que pertenezca a $S$ 
+\end{proof}
+
+\subsection{}
+\begin{lema}
+	Sea $G$ regular de $n$ nodos tal que $\chi(G) + \chi(\overline{G}) = n + 1 \Longrightarrow G = n K_1$ ó $G = K_n$ ó $G = C_n$ con $n$ impar.
+\end{lema}
+
+\begin{proof}
+
 	~
 
 	Por absurdo supongo que existe $G$ reular de $n$ nodos con $\chi(G) + \chi(\overline{G}) = n + 1$ y $G \not= n K_1$ y $G \not= K_n$ y $G$ no es $C_n$ con $n$ impar. Es decir, se cumple esto:
