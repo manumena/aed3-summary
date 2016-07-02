@@ -21,8 +21,8 @@
 
 \begin{lema}
 \label{eCircSimple}
-    $G = (V, X)$ grafo conexo y $e \in X$. $G - e$ es conexo $\Longleftrightarrow e \in$ circuito simple de $G$    
-
+    $G = (V, X)$ grafo conexo y $e \in X$. $G - e$ es conexo
+    $\Longleftrightarrow e \in$ circuito simple de $G$.
 \end{lema}
 
 \begin{proof}
@@ -32,7 +32,8 @@
 
     $G$ es conexo, $e \in X$, $e:(v, w)$
 
-    $G - e$ es conexo, entonces existe un camino simple $P$ entre $v$ y $w$ en $G - e$.
+    $G - e$ es conexo, entonces existe un camino simple $P$ entre $v$ y $w$ en
+    $G - e$.
 
     Entonces $P + e$ es un circuito simple en $G$
 
@@ -42,7 +43,10 @@
 
     $e \in$ circuito simple de $G$, $C$
 
-    Sean $z_1, z_2 \in V$. Seguro existe en $G$ un camino entre $z_1$ y $z_2$. Si ese camino no usa $e$, ese camino también pertenece a $G - e$. Si usa $e$, armamos un nuevo camino donde reemplazamos $e$ por $C - e$, donde el cmino resultante $\in G - e \Longrightarrow G - e$ conexo.
+    Sean $z_1, z_2 \in V$. Seguro existe en $G$ un camino entre $z_1$ y $z_2$.
+    Si ese camino no usa $e$, ese camino también pertenece a $G - e$. Si usa
+    $e$, armamos un nuevo camino donde reemplazamos $e$ por $C - e$, donde el
+    camino resultante $\in G - e \Longrightarrow G - e$ conexo.
 \end{proof}
 
 \begin{lema}
@@ -55,9 +59,12 @@
 
     \begin{enumerate}
         \item $G$ es un árbol.
-        \item $G$ es un grafo sin circuitos simples, pero si se agrega cualquier arista $e$ a $G$resulta un grafo con exactamente un circuito simple, y ese circuito contiene a $e$.
+        \item $G$ es un grafo sin circuitos simples, pero si se agrega
+        cualquier arista $e$ a $G$resulta un grafo con exactamente un circuito
+        simple, y ese circuito contiene a $e$.
         \item Existe exactamente un camino simple entre todo par de nodos.
-        \item $G$ es conexo, pero si se quita cualquier arista a $G$, queda un grafo no conexo.
+        \item $G$ es conexo, pero si se quita cualquier arista a $G$, queda un
+        grafo no conexo.
     \end{enumerate}
 \end{teo}
 
@@ -408,11 +415,24 @@ Dado $G$, ¿cómo demostramos que $chi(G) = k$?
 \begin{proof}
     ~
 
-    Si $G$ es cografo entonces $G$ o $\overline{G}$ no es conexo, o $G$ es trivial.
+    Si $G$ es cografo entonces $G$ o $\overline{G}$ no es conexo, o $G$ es
+    trivial.
 
-    $\overline{P_4} = P_4$ es conexo y no trivial $\Longrightarrow$ no es cografo.
+    $\overline{P_4} = P_4$ es conexo y no trivial $\Longrightarrow$ no es
+    cografo.
 
-    Sea $G$ un grafo tal que $G$ es conexo, $\overline{G}$ es conexo, $G$ no es trivial y $\forall v \in V$ $G - \{v\}$ ó $\overline{G} - \{v\}$ (el que no sea conexo) Sin perdida de generalidad supongo $G - \{v\}$ no conexo. 
+    Sea $G$ un grafo tal que $G$ es conexo, $\overline{G}$ es conexo, $G$ no
+    es trivial y $\forall v \in V$ $G - \{v\}$ ó $\overline{G} - \{v\}$ (el
+    que no sea conexo) Sin perdida de generalidad supongo $G - \{v\}$ no
+    conexo.
 
-    Como $\overline{G}$ es conexo, $v$ tiene un vecino en $\overline{G}$, lo llamo $z$.
+    Como $\overline{G}$ es conexo, $v$ tiene un vecino en $\overline{G}$, lo
+    llamo $z$.
 \end{proof}
+
+\subsection{Flujo}
+
+\begin{lema}
+    Sea $G$ un grafo bipartito, $\exists$ un matching máximo $M$ de $k$ ejes
+    en $G \Longleftrightarrow \exists$ un flujo máximo
+\end{lema}

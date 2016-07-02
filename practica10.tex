@@ -74,7 +74,98 @@ Si $G$ es $k-$cromático y color crítico entonces:
 	}
 \end{enumerate}
 
-\setcounter{subsection}{12}
+
+\setcounter{subsection}{11}
+\subsection{}
+\subsubsection{}
+
+\begin{proof}
+	Por inducción:
+
+	$P(n)$: Si $G = (V, E)$, $|V| = n \Longrightarrow \chi(G) + \chi(\overline{G}) \leq n + 1$
+
+	~
+
+	Caso base:
+
+	$P(1)$: $G = K_1 = \overline{G}$ y $\chi(G) = 1 = \chi(\overline{G}) \Longrightarrow 1 + 1 \leq 1 + 1$
+
+	~
+
+	Paso inductivo:
+
+	$P(n) \Longrightarrow P(n + 1)$, sea $G = (V, E)$, $|V| = n + 1$, sea $n \in V$, llamo $H = G - v \Longrightarrow$ tiene $n$ vértices.
+
+	Por H.I. $\chi(H) + \chi(\overline{H}) \leq n + 1$.
+
+	$\chi(G) \leq chi(H) + 1$
+
+	$\chi(\overline{G}) \leq chi(\overline{H}) + 1$
+
+	~
+
+	Supongo que en algún caso vale ``$<$''.
+
+	$\chi(G) + \chi(\overline{G}) < \chi(H) + \chi(\overline{H}) + 2 \leq (n + 1) + 2 = n + 3$
+
+	$\Longrightarrow \chi(G) + \chi(\overline{G}) \leq (n + 3) - 1 = n + 2$
+
+	~
+
+	Supongo que vale ``='' en los dos casos, entonces necesito un color nuevo para $v$ en $G$ y en $\overline{G}$.
+
+	Entonces $d_G(v) \geq \chi(H)$ y $d_{\overline{G}}(v) \geq \chi(\overline{H})$.
+
+	Sumando, $d_G(v) + d_{\overline{G}}(v) = (n + 1) - 1 = n \geq \chi(H) + \chi(\overline{H}) = chi(G) - 1 + \chi(\overline{G}) - 1 = \chi(G) + \chi(\overline{G}) - 2$
+
+	Entonces $\chi(G) + \chi(\overline{G}) \leq n + 2$.
+\end{proof}
+
+\subsubsection{}
+\begin{proof}
+	\begin{enumerate}
+		\item {
+			$n \leq \chi(G) \times \chi(\overline{G})$
+
+			Sea $k = \chi(G) \Longrightarrow$ existe una partición de $V$, $\{C_1, ..., C_k\}$ de conjuntos independientes (dado un coloreo con $k$ colores, $C_i$ es el conjunto de vértices con color $i$).
+
+			$n = |V| = |C_1|$ ($< \frac{n}{k}$) $ + ... + |C_k|$ ($< \frac{n}{k}$) $< k \times \frac{n}{k} = n$ Absurdo.
+
+			Entonces $\exists C_i / |C_i| \geq \frac{n}{k}$.
+
+			Como $C_i$ es independiente en $G \Longrightarrow C_i$ es completo en $G$.
+
+			Entonces $\chi(\overline{G}) \geq |C_i| \geq \frac{n}{k} \Longrightarrow k \times \chi(\overline{G}) \geq n $
+
+			$\chi(G) \times \chi(\overline{G}) \geq n$
+		}
+		\item {
+			\begin{prop}
+			\label{CBC}
+				$\forall a, b > 0, \sqrt{a \times b} \leq \frac{a + b}{2}$
+			\end{prop}
+
+			Por propiedad $\sqrt{\chi(G) \times \chi(\overline{G})} \leq \frac{n + 1}{2}$
+		}
+	\end{enumerate}
+\end{proof}
+
+Demostración alternativa de $n \leq \chi(G) \times \chi(\overline{G})$:
+
+\begin{proof}
+	Se puede dar un coloreo de $K_n$ con a lo sumo $\chi(G) \times \chi(\overline{G})$ colores.
+\end{proof}
+
+\subsubsection{}
+\begin{proof}
+
+	~
+	
+	Por b), $n \leq \chi(G) \times \chi(\overline{G})$.
+
+	$\sqrt{n} \leq \sqrt{\chi(G) \times \chi(\overline{G})} \leq \frac{\chi(G) + \chi(\overline{G})}{2} \Longrightarrow 2 \sqrt{n} \leq \chi(G) + \chi(\overline{G})$
+\end{proof}
+
 \subsection{}
 \begin{lema}
 Sea $G$ regular de $n$ nodos tal que $\chi(G) + \chi(\overline{G}) = n + 1 \Longrightarrow G = n K_1$ ó $G = K_n$ ó $G = C_n$ con $n$ impar.

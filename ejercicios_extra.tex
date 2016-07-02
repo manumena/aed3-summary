@@ -60,3 +60,11 @@ Demostrar que no existen grafos planares $4-$regulares de 7 vértices.
 
 \subsubsection{}
 Exhibir todos los $n$ para los cuales existe un grafo planar $4-$ regular de 7 vértices. Justificar.
+
+\subsection{Reducción de SAT a 3-SAT}
+
+Probamos que SAT $\leq_p$ 3-SAT
+
+$x_1 \lor x_2 \longleftrightarrow (x_1 \lor x_2 \lor y) \land (x_1 \lor x_2 \lor \neg y)$
+
+$(x_1 \lor x_2 \lor x_3 \lor x_4 \lor x_5) \longleftrightarrow (x_1 \lor x_2 \lor y_1) \land (\neg y_1 \lor x_3 \lor y_2) \land (\neg y_2 \lor x_4 \lor x_5)$

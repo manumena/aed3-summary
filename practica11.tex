@@ -1,0 +1,211 @@
+\section{Práctica 11}
+
+\setcounter{subsection}{1}
+\subsection{}
+\subsubsection{}
+Verdadero. $Correspondencia = \emptyset$
+
+\subsubsection{}
+Falso. $K_1$ no tiene recubrimento de vértices por aristas ya que al no tener
+aristas no se puede cubrir el vértice.
+
+\subsubsection{}
+Verdadero. Un nodo asilado.
+
+\subsubsection{}
+Verdadero. Todos los vértices
+
+\subsubsection{}
+Verdadero. Cualquier correspondencia tiene como máximo $\frac{n}{2}$ ya que
+cada arista se corresponde con exactamente 2 vértices debido a que no pueden
+haber 2 aristas que compartan algún vértice. Cualquier recubrimiento de
+vértices por aristas tiene como mínimo $\frac{n}{2}$, ya que la mínima
+cantidad de aristas que puede lograrse es cuando no se repiten nodos, por lo
+que por cada arista se tocan 2 nodos. Entonces cualquier correspondencia
+$\leq \frac{n}{2} \leq$ cualquier cubrimiento de vértices por aristas.
+
+\subsection{}
+\subsubsection{}
+Un grafo tiene un recubrimiento de vértices por aristas si y sólo si no
+tiene vértices aislados.
+
+\begin{proof}
+
+	~
+
+	$\Longrightarrow )$
+
+	Supongo que un grafo tiene algún vértice asilado. Entonces no hay manera
+	de formar un recubrimiento de vértices por aristas ya que ese nodo no
+	puede ser cubierto por no tener aristas que incidan sobre él. Absurdo.
+
+	~
+
+	$\Longleftarrow )$
+
+	El grafo no tiene vértices aislados, entonces puedo formar un
+	recubimiento donde por cada nodo pongo alguna de sus aristas.
+\end{proof}
+
+\subsubsection{}
+
+Por inducción:
+
+Caso base: $n = 2$
+
+Cualquier recubrimiento de aristas tiene 1 arista.
+
+Hipótesis inductiva: Si un grafo tiene $n$ vértices, cualquier recubrimiento
+de vértices por aristas tiene al menos $l{n/2}l$ aristas.
+
+Paso inductivo:
+
+Sea un grafo $G$ de $n + 1$ vértices, quiero ver que cualquier recubrimiento
+de aristas por vértices tiene al menos $l(n + 1)/2l$ aristas. Es decir que si
+$n$ es par tiene al menos $n/2$ y si es impar, $(n + 1)/2$.
+
+Elijo cualquier vértice $v$ de $G$ y lo saco. Como $G - v$ tiene $n$ vértices
+, sé por hipótesis inductiva que $G - v$ tiene un recubrimiento de vértices
+por aristas de al menos $ln/2l$ aristas. Entonces si ahora agrego alguna de
+las aristas de $v$ al recubrimiento, si $n$ es par, tiene al menos
+$n/2 + 1 = (n + 2)/2 \geq (n + 1)/2$ aristas, y si $n$ es impar, tiene al
+menos $(n + 1)/2 + 1 = (n + 3)/2 \geq (n + 2)/2$ aristas.
+
+\setcounter{subsubsection}{3}
+\subsubsection{}
+Supongamos que un recubrimiento minimal contiene un circuito. Podría
+eliminarse una de las aristas del circuito y todos los vértices permanecerían
+recubiertos, incluso los que son incididos por la arista eliminada, que están
+cubiertos por los extremos del camino que se forma. Pero entonces el
+recubrimiento no era minimal. Absurdo.
+
+\subsubsection{}
+$ln/2l$
+
+\subsubsection{}
+\begin{lema}
+	Un recubimiento es minimal si y sólo si no contiene caminos ni circuitos
+	simples de longitud mayor o igual a 3.
+\end{lema}
+
+\begin{proof}
+
+	~
+
+	$\Longrightarrow )$
+
+	Si el recubrimiento contiene un camino o circuito simple de longitud
+	mayor o igual a 3, entonces puedo eliminar una arista cualquiera del
+	circuito, o una del camino que no sea de los extremos, y los nodos sobre
+	los que incide esta arista permanecerían cubiertos por las aristas
+	adyacentes a esta. Entonces no sería un recubrimiento minimal.
+
+	~
+
+	$\Longleftarrow )$
+
+	El recubrimiento no contiene caminos ni circuitos simples de longitud
+	mayor o igual a 3. Para cualquier arista que tome, si la saco, es seguro
+	que alguno de los nodos de los extremos quedaría sin cubrimiento, ya que
+	de lo contrario, esa arista pertenecería a un camino o circuito simple de
+	longitud mayor o igual a 3.
+
+
+\end{proof}
+
+\setcounter{subsection}{4}
+\subsection{}
+$G = (V, E)$ bipartito con $n = |V|$ y $m = |E|$.
+
+$\alpha =$ cantidad de nodos de conjunto independiente máximo.
+
+$\beta =$ cantidad de nodos de cubrimiento de aristas por vértices cualquiera.
+
+$m \leq \alpha \times \beta$
+
+\begin{proof}
+	$E_i = \{e \in E / e$ toca al vértice $i\}$
+
+	$E = \cup_{i = 1}^{\beta}E_{v_i}$ por ser cubrimiento de aristas por
+	vértices.
+
+	$\{v_1, ..., v_{\beta}\}$ es cubrimiento de aristas por vértices.
+
+	$m = |E| = |\cup_{i = 1}^{\beta}E_{v_i}| \leq \sum_{i = 1}^{\beta}|E_{v_i}| \leq \sum_{i = 1}^{\beta}d(v_i)$ ($d(v_i) \leq \alpha$) $\leq \sum_{i = 1}^{\beta}\alpha = \alpha \times \beta$
+
+	Voy a probar que $d(v_i) \leq \alpha$. Como $G$ es bipartito se que tiene
+	dos conjuntos independientes $a \leq \alpha$ y $b \leq \alpha$. Entonces
+	cada nodo perteneciente a alguno de estos dos conjuntos tiene como mucho
+	$\alpha$ vecinos.
+\end{proof}
+
+\setcounter{subsection}{8}
+\subsection{}
+
+\setcounter{subsubsection}{1}
+\subsubsection{}
+
+$G = (V_1 \cup V_2, E)$ bipartito tiene una correspondesncia completa de $V_1$ en $V_2 \Longrightarrow \forall W \subseteq V_1$ se cumple $|\Gamma(W)| \geq |W|$
+
+\begin{proof}
+
+	~
+
+	$\Longrightarrow )$
+
+	$G$ tiene una correspondencia completa de $V_1$ en $V_2$, entonces existe
+	un correspondencia $C$ tal que todo vértice de $V_1$ es incidente a un
+	arco de $C$. Es decir que cualquier vértice de $V_1$ que tome es adyacente
+	al menos a algún vértice de $V_2$. Por lo tanto cualquier subconjunto de
+	$r$ vértices de $V_1$, tiene al menos $r$ vértices adyacentes a $V_2$, al
+	menos uno por cada vértice de $V_1$.
+
+	~
+
+	$\Longleftarrow )$
+
+	Quiero ver que $\forall W \subseteq V_1$ se cumple $|\Gamma(W)| \geq |W| \Longrightarrow G$ tiene una correspondencia de $V_1$ en $V_2$.
+
+	$G$ tiene una correspondencia completa de $V_1$ en $V_2 \Longrightarrow$
+
+	$G$ tiene uan correspondencia de $|V_1|$ ejes $\Longrightarrow$
+
+	$G$ tiene una correspondencia máxima de $|V_1|$ ejes $\Longrightarrow$
+
+	$G_{st}$ tiene un flujo máximo de valor $|V_1| \Longrightarrow$
+
+	$G_{st}$ tiene un corte mínimo de capacidad $\Longrightarrow$
+
+	En $G{st}$ existe un corte de capacidad $|V_1|$ y todo corte tiene
+	capacidad $\geq |V_1| \Longrightarrow$
+
+	En $G{st}$ \begin{enumerate}
+		\item Existe un corte que corta $|V_1|$ ejes
+		\item Todo corte corta al menos $|V_1|$ ejes
+	\end{enumerate}
+
+	Para demostrar que $G$ tiene una correspondencia completa de $V_1$ en
+	$V_2$ alcanza con demostrar $\forall W \subseteq V_1$, $|\Gamma(W)| \geq |W| \Longrightarrow 1)$ y $2)$.
+
+	\begin{enumerate}
+		\item Por ejemplo $S = \{s\}$.
+		\item {
+			Sea $S$ cualquier corte en $G{st}$. Defino $T = V(G{st}) - S$.
+
+			\begin{enumerate}[label=\alph*)]
+				\item $\forall v \exists V_1 \cap T$ se corta $(s, v)$
+				\item $\forall v \exists S \cap \Gamma(V_1 \cap S)$ se corta $(v, t)$
+				\item $\forall v \exists T \cap \Gamma(V_1 \cup S) \exists V_1 \cup S$ tal que se corta $(w, v)$
+			\end{enumerate}
+
+			En total se cortal al menos esta cantidad de ejes: $|V_1 \cup T| + |S \cup \Gamma(V_1 \cup S)| + |T \cup \Gamma(V_1 \cup S)| = |V_1 \cup T| + |\Gamma(V_1 \cup S)|(\geq |V_1 \cup S|) \geq |V_1|$.
+		}
+	\end{enumerate}
+\end{proof}
+
+\setcounter{subsection}{14}
+\subsection{}
+Se puede usar el método \textit{Ford y Fulkerson} recorriendo la red
+residual pero en lugar de aumentar el flujo, disminuirlo, incrementando los
+caminos de aumento de la red residual.
+flujo

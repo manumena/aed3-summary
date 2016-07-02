@@ -1,0 +1,137 @@
+\section{Parciales}
+
+\subsection*{21/12/2013}
+
+\begin{enumerate}
+
+\item
+Un grafo se dice planar maximal si y sólo si es simple y planar pero deja de
+serlo si se le agrega cualquier eje entre vértices existentes.
+
+\begin{enumerate}[label=\alph*)]
+\item
+Demostrar que si $G$ es planar maximal entonces es conexo.
+
+~
+
+Supongo que $G$ es planar maximal pero no es conexo. Esto significa que $G$
+tiene 2 o más componentes conexas $\{C_1, ..., C_k\}$. Si agrego una arista
+$(a, b)$ con $a \in C_i, b \in C_j$, siendo $a$ y $b$ vértices alcanzables
+por la región externa, entonces $G$ sigue siendo planar. Absurdo.
+
+\item
+Exhibir todos los grafos planares maximales no isomorfos de $n \leq 5$.
+Justificar.
+
+~
+
+Para $n < 5$ no pueden formarse grafos no planares ya que no hay manera de
+que un grafo con $n < 5$ nodos sea homeomorfo a $K_5$ o a $K_{3,3}$, ya que
+cualquier contracción de aristas que haga decrementa en 1 la cantidad de
+nodos del grafo. Por lo tanto no hay grafos planares maximales con $n < 5$.
+
+Para $n = 5$, el único grafo planar maximal es $K_5$ sin una arista. Esto es
+porque teniendo $n = 5$, la única forma de que al agregarle una arista deje
+de ser planar, es que sea homeomorfo a $K_5$ ó a $K_{3,3}$. A $K_{3,3}$ no
+puede ser por que tiene menor cantidad de nodos, lo cual nos deja a $K_5$ como
+única opción. Para ser homeomorfo a $K_5$, debo poder hacer contracciones de
+aristas hasta poder formarlo, pero al hacerlo disminuiría la cantidad de
+nodos, por lo que la única contracción posible es la nula, es decir, no
+contraer ninguna arista. Luego, sólo puede ser homeomorfo a $K_5$ si al
+agregar una arista, el grafo es $K_5$.
+\end{enumerate}
+
+\item
+Sea $G$ un grafo que tiene dos vértices $u \not= v$ tales que todo vértice
+adyacente a $u$ es también adyacente a $v$. Demostrar que
+$\chi(G) = \chi(G - u)$. Notar que $u$ y $v$ no son adyacentes porque si lo
+fueran $v$ sería adyacente a sí mismo.
+
+~
+
+Supongo que $\chi(G) > \chi(G - u)$. Tomo $G - u$ y le agrego $u$ con las
+aristas correspondientes para formar $G$. Para que haya aumentado el valor
+cromático de $G - u$ al agregar $u$ es necesario que se cada vecino de $u$
+requiera un color distinto así al agregar $u$, le asigno un nuevo color.
+Pero eso no es posible ya que $v$ tiene los mismo vecinos. Si $u$ necesitase
+un nuevo color, entonces $v$ no tendría asignado un color válido. Esto prueba
+que $\chi(G) \leq \chi(G - u)$.
+
+Como $G - u$ es un subgrafo de $G$, se cumple que $\chi(G) \geq \chi(G - u)$.
+
+Por lo tanto $\chi(G) = \chi(G - u)$.
+
+\item
+Demostrar que el siguiente problema es NP-completo.
+
+CLIQUE MÁS PESADA
+
+Entrada: un grafo $G$ en el cual cada vértice tiene asociado un peso entero
+positivo, y un entero positivo $k$.
+
+Pregunta: ¿tiene $G$ un subgrafo completo de peso total $k$ o mayor?
+
+~
+
+Primero demostraremos que el problema de la clique más pesada, que llamaremos
+$\pi$, pertenece a la clase de complejidad NP. pendiente...
+
+Ahora consideremos el problema de clique máxima, que llamaremos $\pi'$, que
+sabemos que es NP-completo, para así formar una reduccíon polinomial
+$f : D_{\pi'} \longrightarrow D_\pi$ de $\pi'$ a $\pi$. De esta forma
+demostraremos que $\pi \in$ NP-hard.
+
+CLIQUE MÁXIMA
+
+Entrada: un grafo $G$ y un entero positivo $k$.
+
+Pregunta: ¿Tiene $G$ un subgrafo completo de tamaño $k$?
+
+Definimos $f : D_{\pi'} \longrightarrow D_\pi$ tal que $f(G, k) = (G', k)$
+donde $G'$ es una copia de $G$ en donde se le asigna un peso de 1 a cada
+vértice.
+
+\begin{enumerate}
+\item
+$f$ mapea instancias de $\pi'$ en $\pi$.
+
+Las instancias de $\pi'$ son pares que incluyen un grafos arbitrario y un
+número entero positivo $k$. $f(G, k) = (G', k)$ es una instancia de $\pi$ ya
+que $k$ es un número entero positivo como $\pi$ requiere que sea. Y en cuanto
+a $G'$, debe ser un grafo cualquiera que tenga pesos enteros positivos en los
+vértices. Esto tambien se cumple.
+
+\item
+$f$ es polinomial, es decir, hay un algoritmo que computa $f$ en tiempo
+polinomial en el tamaño de la entrada.
+
+\textbf{Algoritmo}:
+
+\begin{enumerate}
+\item Copiar $G$
+\item Asignar 1 en el peso de cada vértice
+\item Copiar $k$
+\end{enumerate}
+
+El tamaño de la entrada es $S = \Omega(n^2)$ y el algoritmo toma tiempo
+$\ord(S)$ por lo que $f$ es polinomial.
+
+\item
+$\forall I \in D_{\pi'}$, $I \in Y_{\pi'} \Longleftrightarrow f(I) \in Y_\pi$.
+
+Si $I \in Y_{\pi'} \Longrightarrow G$ tiene un subgrafo completo de tamaño $k$
+
+$\Longrightarrow f(I)$ tiene un subgrafo completo de tamaño $k$ con peso 1 en
+cada uno de sus vértices.
+
+$\Longrightarrow f(I)$ tiene $G$ un subgrafo completo de peso total $k$ o
+mayor
+
+$\Longrightarrow f(I) \in Y_\pi$
+
+Esto demuestra la ida, para la vuelta es necesario observar que $f(I)$ es
+una instancia particular, ya que todos los vértices de $G'$ tiene peso 1.
+
+
+\end{enumerate}
+\end{enumerate}
