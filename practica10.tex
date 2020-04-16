@@ -2,7 +2,7 @@
 
 \setcounter{subsection}{1}
 \subsection{}
-Puede modelarse como un problema de grafos donde cada nodo es una tarea y existe una arista entre cada par de vértices que comparte un recurso.
+Puede modelarse como un problema de grafos donde cada nodo es una tarea y existe una arista entre cada par de vértices que comparte un recurso. La cantidad de horas es el número cromatico del grafo.
 
 \subsection{}
 \subsubsection{}
@@ -12,21 +12,21 @@ Verdadero. Si $H$ es un subgrafo de $G \Longrightarrow \chi(H) \leq \chi(G)$. Co
 Falso, por ejemplo, $C_5$.
 
 \subsubsection{}
-Falso. El subgrafo máximo completo de $C_5$ es $K_2$ mientras que su número cromático es 3. El número cromático de $K_3$ tambíen es 3.
+Falso. El subgrafo máximo completo de $C_5$ es $K_2$ mientras que su número cromático es 3. El número cromático de $K_3$ también es 3.
 
 \subsubsection{}
 Falso. Puedo tener un grafo donde un vértice y sólo él se une el resto de los vértices. Su grado puede ser tan grande como quiera pero su número cromático es 2.
 
 \subsection{}
-Se agrega un nodo al grafo por cada curso en donde dos cursos comparten una arista si tienen algun inscripto en común. A partir de este modelo se colorea el grafo en donde cada color representa un horario distinto.
+Se agrega un nodo al grafo por cada curso, en donde dos cursos comparten una arista si tienen algun inscripto en común. A partir de este modelo se colorea el grafo en donde cada color representa un horario distinto.
 
 \subsection{}
-Se arma un grafo a partir de la matriz de distancias en donde cada nodo es una torre y dos nodos comparten una arista entre sí en caso de tener una distancia mayor o igual a 50. El número cromático de este grafo es el menor número de frecuencias distintas.
+Se arma un grafo a partir de la matriz de distancias en donde cada nodo es una torre y dos nodos comparten una arista entre sí en caso de tener una distancia mayor o igual a 50. El número cromático de este grafo es el menor número de frecuencias distintas. Es 3.
 
 \subsection{}
 \setcounter{subsubsection}{1}
 \subsubsection{}
-Sea $G$ un grafo $k-$cromático, elijo un vértice $v in G$ tal que $G - v$ es $k-$cromático. Lo saco de $G$ e itero hasta no poder encontrar un vértice que cumpla esa condición. El grafo resultante es $k-$cromático crítico.
+Sea $G$ un grafo $k-$cromático, elijo un vértice $v \in G$ tal que $G - v$ es $k-$cromático. Lo saco de $G$ e itero hasta no poder encontrar un vértice que cumpla esa condición. El grafo resultante es $k-$cromático crítico.
 
 \subsection{}
 Si $G$ es $k-$cromático y color crítico entonces:
@@ -67,9 +67,7 @@ Si $G$ es $k-$cromático y color crítico entonces:
 		$G$ no tiene ningún vértice que al sacarlo quede disconexo.
 
 		\begin{proof}
-			Por absurdo, supongamos que $G - v$ es no conexo.
-
-			pendiente...
+			Por absurdo, supongamos que $G - v$ es no conexo. Entonces hay alguna de las componentes conexas de $G - v$ que tiene un número cromático máximo. Supongamos que saco uno de los nodos de otra componente, eso no disminuiria el numero cromático de $G - v$. Entonces tampoc, sacarlo tampoco disminuiría el número cromático de $G$, por lo que no es crítico. (No estoy seguro de esto ultimo asi que pendiente...)
 		\end{proof}
 	}
 \end{enumerate}
@@ -93,13 +91,13 @@ Si $G$ es $k-$cromático y color crítico entonces:
 
 	Paso inductivo:
 
-	$P(n) \Longrightarrow P(n + 1)$, sea $G = (V, E)$, $|V| = n + 1$, sea $n \in V$, llamo $H = G - v \Longrightarrow$ tiene $n$ vértices.
+	$P(n) \Longrightarrow P(n + 1)$, sea $G = (V, E)$, $|V| = n + 1$, sea $v \in V$, llamo $H = G - v \Longrightarrow$ tiene $n$ vértices.
 
 	Por H.I. $\chi(H) + \chi(\overline{H}) \leq n + 1$.
 
-	$\chi(G) \leq chi(H) + 1$
+	$\chi(G) \leq \chi(H) + 1$
 
-	$\chi(\overline{G}) \leq chi(\overline{H}) + 1$
+	$\chi(\overline{G}) \leq \chi(\overline{H}) + 1$
 
 	~
 

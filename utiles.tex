@@ -1,0 +1,43 @@
+\section{Útiles}
+
+\begin{table}[h]
+	\begin{center}
+	    \begin{tabularx}{\textwidth}{|c|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|c|}
+			\hline
+			\textbf{Algoritmo} & \textbf{Entrada} & \textbf{Salida} & \textbf{Complejidad}\\
+			\hline
+			BFS/DFS & Un grafo conexo y una raíz & Recorre todos los nodos del grafo & O(n) \\
+			\hline
+			Prim (con cola de prioridad) & Un grafo conexo, una funcion de peso y una raíz & Un árbol generador mínimo del grafo & O(m log n) \\
+			\hline
+			Kruskal (con disjoint set) & Un grafo conexo y una funcion de peso & Un bosque generador mínimo del grafo & O(m log n) \\
+			\hline
+			Dijkstra & Un grafo con pesos no negativos y un nodo de origen & Caminos minimos del nodo de origen a cada nodo del grafo, y sus pesos & O((n + m) log n) \\
+			\hline
+			Bellman-Ford & Un grafo y un nodo de origen & Caminos minimos del nodo de origen a cada nodo del grafo, y sus pesos. Puede detectar ciclos negativos & O(n + m) \\
+			\hline
+			Floyd-Warshall & Un grafo & Caminos minimos entre todo par de nodos y sus pesos. Puede detectar ciclos negativos & $O(n^3)$ \\
+			\hline
+			Dantzig & Un grafo & Caminos minimos entre todo par de nodos y sus pesos. Puede detectar ciclos negativos & $O(n^3)$ \\
+			\hline
+			Hierholzer & Un grafo conexo con nodos de grado par & Un circuito euleriano & ? \\
+			\hline
+	    \end{tabularx}
+  	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+    	\begin{tabular}{|c|c|}
+    		\hline
+    		Matching & Aristas que no comparten nodos \\
+    		\hline
+    		Conjunto independiente & Nodos no adyacentes \\
+    		\hline
+    		Recubrimiento de aristas & Nodos que tocan todas las aristas \\
+    		\hline
+    		Recubrimientos de nodos & Aristas que tocan todos los nodos \\
+    		\hline
+    	\end{tabular}
+    \end{center}
+\end{table}
